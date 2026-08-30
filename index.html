@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Happy Birthday My Queen! 💖 | September 11th Special</title>
+    <title>Happy Birthday My Cutie, Hridu Sona! 💖 | September 11th Special</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,15 +47,45 @@
         body {
             background-color: var(--bg-dark);
             background-image:
-                radial-gradient(circle at 50% 10%, rgba(255, 77, 109, 0.35) 0%, transparent 55%),
-                radial-gradient(circle at 15% 50%, rgba(201, 24, 74, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 85% 60%, rgba(123, 44, 191, 0.32) 0%, transparent 55%),
-                radial-gradient(circle at 50% 90%, rgba(255, 183, 3, 0.2) 0%, transparent 60%);
+                radial-gradient(circle at 50% 10%, rgba(255, 77, 109, 0.38) 0%, transparent 55%),
+                radial-gradient(circle at 15% 50%, rgba(201, 24, 74, 0.32) 0%, transparent 50%),
+                radial-gradient(circle at 85% 60%, rgba(123, 44, 191, 0.35) 0%, transparent 55%),
+                radial-gradient(circle at 50% 90%, rgba(255, 183, 3, 0.22) 0%, transparent 60%);
             color: var(--text-light);
             font-family: var(--font-body);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+        }
+
+        /* ROMANTIC AURORA SKY LIGHT WAVES */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 30%, rgba(255, 77, 109, 0.18), transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(123, 44, 191, 0.22), transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(255, 183, 3, 0.15), transparent 60%);
+            animation: auroraShift 20s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes auroraShift {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(4deg) scale(1.08);
+            }
+
+            100% {
+                transform: rotate(-3deg) scale(1.02);
+            }
         }
 
         /* FAIRY STRING LIGHTS ON TOP */
@@ -73,26 +103,33 @@
         }
 
         .fairy-bulb {
-            width: 10px;
-            height: 14px;
+            width: 11px;
+            height: 15px;
             border-radius: 50% 50% 40% 40%;
             background: #ffe57f;
-            box-shadow: 0 0 15px #ffe57f, 0 0 25px #ff4d6d;
+            box-shadow: 0 0 16px #ffe57f, 0 0 28px #ff4d6d;
             animation: bulbGlow 1.8s infinite alternate;
         }
 
         .fairy-bulb:nth-child(even) {
             background: #ff4d6d;
-            box-shadow: 0 0 15px #ff4d6d, 0 0 25px #ffccd5;
+            box-shadow: 0 0 16px #ff4d6d, 0 0 28px #ffccd5;
             animation-delay: 0.9s;
         }
 
         @keyframes bulbGlow {
-            0% { opacity: 0.4; transform: scale(0.85); }
-            100% { opacity: 1; transform: scale(1.15); }
+            0% {
+                opacity: 0.4;
+                transform: scale(0.85);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
         }
 
-        /* DYNAMIC AESTHETIC CARTOON COUPLE BACKDROP */
+        /* DYNAMIC AESTHETIC CARTOON COUPLE BACKDROP WITH FLOATING FIREFLIES */
         .cartoon-couple-bg {
             position: fixed;
             bottom: 0;
@@ -101,7 +138,7 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.72;
+            opacity: 0.78;
             transition: opacity 0.5s ease;
         }
 
@@ -110,7 +147,7 @@
             height: 100%;
         }
 
-        /* Canvases for Particles, Fireworks, Stars & Meteor Shower */
+        /* Canvases for Particles, Fireworks, Stars, Meteor Shower & Sky Lanterns */
         #particleCanvas,
         #fireworksCanvas,
         #starsCanvas,
@@ -123,10 +160,21 @@
             pointer-events: none;
         }
 
-        #particleCanvas { z-index: 0; }
-        #starsCanvas { z-index: 1; }
-        #shootingStarsCanvas { z-index: 2; }
-        #fireworksCanvas { z-index: 998; }
+        #particleCanvas {
+            z-index: 0;
+        }
+
+        #starsCanvas {
+            z-index: 1;
+        }
+
+        #shootingStarsCanvas {
+            z-index: 2;
+        }
+
+        #fireworksCanvas {
+            z-index: 998;
+        }
 
         /* Top Navigation Controls & Multi-Music Selector Player */
         .top-nav {
@@ -193,29 +241,6 @@
             box-shadow: 0 6px 20px rgba(255, 77, 109, 0.8);
         }
 
-        .nav-pill {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(14px);
-            border: 1px solid var(--card-border);
-            padding: 8px 14px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .nav-pill:hover {
-            transform: scale(1.05);
-            background: rgba(255, 77, 109, 0.3);
-            border-color: rgba(255, 77, 109, 0.5);
-        }
-
         .vinyl-disc {
             width: 24px;
             height: 24px;
@@ -226,8 +251,15 @@
             animation-play-state: paused;
         }
 
-        .vinyl-disc.playing { animation-play-state: running; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .vinyl-disc.playing {
+            animation-play-state: running;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
         .container {
             max-width: 1200px;
@@ -262,9 +294,20 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 77, 109, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 77, 109, 0.9); }
-            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 77, 109, 0.4); }
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(255, 77, 109, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgba(255, 77, 109, 0.9);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(255, 77, 109, 0.4);
+            }
         }
 
         .hero-title {
@@ -345,100 +388,141 @@
         }
 
         /* =========================================================================
-           11TH SEPTEMBER SPECIAL VIEW: GF SINGLE PICTURES & WISHING SPOTLIGHT
+           11TH SEPTEMBER ULTRA-HD BIGGER 10-PHOTO LOVE HEART SHAPE
            ========================================================================= */
         .september11-view-container {
             display: none;
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto 35px;
+            max-width: 1000px;
+            margin: 10px auto 35px;
+            padding-top: 5px;
             animation: fadeInZoom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes fadeInZoom {
-            from { opacity: 0; transform: scale(0.9) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
-        .gf-spotlight-card {
-            background: rgba(255, 255, 255, 0.08);
+        .heart-mosaic-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 950px;
+            height: 660px;
+            margin: 10px auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glowing Heart Path Vector Backdrop */
+        .heart-svg-backdrop {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 92%;
+            height: 92%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.85;
+        }
+
+        .heart-center-card {
+            position: absolute;
+            z-index: 25;
+            text-align: center;
+            background: rgba(15, 5, 29, 0.94);
             backdrop-filter: blur(25px);
             border: 2px solid var(--gold-accent);
-            border-radius: 28px;
-            padding: 20px;
-            box-shadow: 0 0 60px rgba(255, 77, 109, 0.7), inset 0 0 30px rgba(255, 229, 127, 0.3);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 30px;
+            border-radius: 22px;
+            padding: 16px 18px;
+            box-shadow: 0 0 45px rgba(255, 77, 109, 0.9), inset 0 0 20px rgba(255, 229, 127, 0.35);
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 52%;
+            pointer-events: auto;
+            max-width: 200px;
+            width: 60%;
         }
 
-        .gf-photo-frame {
-            width: 100%;
-            height: 350px;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            border: 3px solid #fff;
+        .heart-center-crown {
+            font-size: 1.6rem;
+            color: var(--gold-accent);
+            margin-bottom: 2px;
+            filter: drop-shadow(0 0 10px rgba(255, 183, 3, 0.9));
         }
 
-        .gf-photo-frame img {
+        .heart-center-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.35rem, 2.7vw, 1.9rem);
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 2px;
+            text-shadow: 0 0 15px rgba(255, 77, 109, 0.8);
+        }
+
+        .heart-center-sub {
+            font-size: 0.72rem;
+            color: var(--gold-glow);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* EVEN BIGGER HD PHOTO CARDS */
+        .heart-photo-item {
+            position: absolute;
+            width: 125px;
+            height: 165px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid #ffffff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 77, 109, 0.55);
+            cursor: pointer;
+            transition: left 1.5s cubic-bezier(0.4, 0, 0.2, 1), top 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+            transform-origin: center center;
+            background: #111;
+        }
+
+        .heart-photo-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.5s ease;
         }
 
-        .gf-spotlight-card:hover .gf-photo-frame img { transform: scale(1.06); }
+        .heart-photo-item:hover {
+            transform: translate(-50%, -50%) scale(1.38) !important;
+            border-color: var(--gold-accent);
+            box-shadow: 0 25px 50px rgba(255, 77, 109, 0.95), 0 0 35px var(--gold-accent);
+            z-index: 99 !important;
+        }
 
-        .gf-photo-badge {
+        .heart-photo-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .heart-photo-badge {
             position: absolute;
-            top: 12px;
-            left: 12px;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
             background: linear-gradient(135deg, var(--primary-pink), var(--deep-rose));
             color: #fff;
-            padding: 5px 14px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        .gf-wishing-content { text-align: left; }
-
-        .crown-badge-header {
-            font-size: 2rem;
-            color: var(--gold-accent);
-            margin-bottom: 8px;
-            filter: drop-shadow(0 0 12px rgba(255, 183, 3, 0.8));
-        }
-
-        .gf-wishing-title {
-            font-family: var(--font-heading);
-            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-            color: #fff;
-            line-height: 1.1;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
-        }
-
-        .gf-wishing-desc {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-
-        .single-photo-controls {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            justify-content: flex-start;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
         }
 
         /* Wishing Balloons Box */
@@ -565,7 +649,9 @@
             touch-action: pan-y;
         }
 
-        .orbit-stage-wrapper:active { cursor: grabbing; }
+        .orbit-stage-wrapper:active {
+            cursor: grabbing;
+        }
 
         /* Glowing 3D Orbit Floor Track */
         .orbit-floor-ring {
@@ -582,8 +668,15 @@
         }
 
         @keyframes ringGlow {
-            0% { border-color: rgba(255, 183, 3, 0.25); box-shadow: 0 0 40px rgba(255, 77, 109, 0.2); }
-            100% { border-color: rgba(255, 77, 109, 0.6); box-shadow: 0 0 95px rgba(255, 183, 3, 0.6); }
+            0% {
+                border-color: rgba(255, 183, 3, 0.25);
+                box-shadow: 0 0 40px rgba(255, 77, 109, 0.2);
+            }
+
+            100% {
+                border-color: rgba(255, 77, 109, 0.6);
+                box-shadow: 0 0 95px rgba(255, 183, 3, 0.6);
+            }
         }
 
         .orbit-stage {
@@ -624,7 +717,7 @@
             font-weight: 700;
             padding: 2px 7px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 5;
         }
 
@@ -649,7 +742,9 @@
             transition: transform 0.6s ease;
         }
 
-        .orbit-card:hover .orbit-img-box img { transform: scale(1.08); }
+        .orbit-card:hover .orbit-img-box img {
+            transform: scale(1.08);
+        }
 
         .orbit-caption {
             margin-top: 6px;
@@ -752,9 +847,23 @@
             border-radius: 15px 15px 5px 5px;
         }
 
-        .layer-bottom { bottom: 15px; height: 55px; background: #5c2237; }
-        .layer-middle { bottom: 65px; height: 50px; background: #ff758f; }
-        .layer-top { bottom: 110px; height: 45px; background: #ffb3c1; }
+        .layer-bottom {
+            bottom: 15px;
+            height: 55px;
+            background: #5c2237;
+        }
+
+        .layer-middle {
+            bottom: 65px;
+            height: 50px;
+            background: #ff758f;
+        }
+
+        .layer-top {
+            bottom: 110px;
+            height: 45px;
+            background: #ffb3c1;
+        }
 
         .icing {
             position: absolute;
@@ -775,10 +884,29 @@
             border-radius: 0 0 10px 10px;
         }
 
-        .drip-1 { left: 10%; top: 118px; height: 26px; }
-        .drip-2 { left: 30%; top: 118px; height: 18px; }
-        .drip-3 { left: 55%; top: 118px; height: 30px; }
-        .drip-4 { left: 80%; top: 118px; height: 20px; }
+        .drip-1 {
+            left: 10%;
+            top: 118px;
+            height: 26px;
+        }
+
+        .drip-2 {
+            left: 30%;
+            top: 118px;
+            height: 18px;
+        }
+
+        .drip-3 {
+            left: 55%;
+            top: 118px;
+            height: 30px;
+        }
+
+        .drip-4 {
+            left: 80%;
+            top: 118px;
+            height: 20px;
+        }
 
         .candle-container {
             position: absolute;
@@ -817,8 +945,13 @@
         }
 
         @keyframes flicker {
-            0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
-            100% { transform: translateX(-50%) scale(1.15) rotate(2deg); }
+            0% {
+                transform: translateX(-50%) scale(1) rotate(-2deg);
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1.15) rotate(2deg);
+            }
         }
 
         .wish-instruction {
@@ -830,8 +963,15 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         /* Gift Box */
@@ -913,7 +1053,9 @@
         }
 
         /* 10 Reasons Flip Cards */
-        .reasons-section { padding: 70px 0; }
+        .reasons-section {
+            padding: 70px 0;
+        }
 
         .reasons-grid {
             display: grid;
@@ -938,7 +1080,9 @@
             transform-style: preserve-3d;
         }
 
-        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
 
         .flip-card-front,
         .flip-card-back {
@@ -1019,7 +1163,7 @@
             text-align: right;
         }
 
-        /* Story Modal */
+        /* Story / Photo Preview Modal */
         .story-modal {
             position: fixed;
             top: 0;
@@ -1108,30 +1252,15 @@
         }
 
         @keyframes slideInRight {
-            from { transform: translateX(100px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
 
-        .helper-box {
-            position: fixed;
-            bottom: 70px;
-            left: 16px;
-            right: 16px;
-            max-width: 340px;
-            margin: 0 auto;
-            background: rgba(15, 5, 29, 0.96);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--primary-pink);
-            border-radius: 18px;
-            padding: 18px;
-            z-index: 999;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            display: none;
-        }
-
-        .helper-box.show {
-            display: block;
-            animation: fadeInUp 0.3s ease;
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         footer {
@@ -1143,7 +1272,9 @@
             margin-top: 50px;
         }
 
-        footer i { color: var(--primary-pink); }
+        footer i {
+            color: var(--primary-pink);
+        }
 
         /* Mobile & Tablet Responsive Media Queries */
         @media (max-width: 768px) {
@@ -1165,11 +1296,6 @@
                 max-width: 145px;
                 font-size: 0.78rem;
                 padding: 4px 8px;
-            }
-
-            .nav-pill {
-                padding: 6px 12px;
-                font-size: 0.8rem;
             }
 
             .hero {
@@ -1197,23 +1323,23 @@
                 font-size: 0.65rem;
             }
 
-            .gf-spotlight-card {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 16px;
-                gap: 18px;
+            .heart-mosaic-wrapper {
+                height: 540px;
             }
 
-            .gf-photo-frame {
-                height: 270px;
+            .heart-photo-item {
+                width: 95px;
+                height: 125px;
+                border-radius: 14px;
             }
 
-            .gf-wishing-content {
-                text-align: center;
+            .heart-center-card {
+                padding: 10px 12px;
+                max-width: 165px;
             }
 
-            .single-photo-controls {
-                justify-content: center;
+            .heart-center-crown {
+                font-size: 1.3rem;
             }
 
             .wishing-balloon-btn {
@@ -1302,9 +1428,40 @@
                 width: 100%;
             }
 
-            .btn-primary, .btn-secondary {
+            .btn-primary,
+            .btn-secondary {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .heart-mosaic-wrapper {
+                height: 480px;
+            }
+
+            .heart-photo-item {
+                width: 78px;
+                height: 102px;
+                border-radius: 12px;
+                border-width: 2px;
+            }
+
+            .heart-photo-badge {
+                font-size: 0.52rem;
+                padding: 2px 5px;
+                bottom: 4px;
+            }
+
+            .heart-center-card {
+                padding: 8px 10px;
+                max-width: 145px;
+            }
+
+            .heart-center-title {
+                font-size: 1.1rem;
+            }
+
+            .heart-center-sub {
+                font-size: 0.6rem;
             }
 
             .orbit-stage-wrapper {
@@ -1369,36 +1526,36 @@
             <defs>
                 <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
                     <stop offset="0%" stop-color="#fff0f5" stop-opacity="1" />
-                    <stop offset="30%" stop-color="#ffccd5" stop-opacity="0.8" />
-                    <stop offset="60%" stop-color="#ff4d6d" stop-opacity="0.3" />
+                    <stop offset="30%" stop-color="#ffccd5" stop-opacity="0.85" />
+                    <stop offset="60%" stop-color="#ff4d6d" stop-opacity="0.4" />
                     <stop offset="100%" stop-color="#7b2cbf" stop-opacity="0" />
                 </radialGradient>
                 <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(255,77,109,0.35)" />
-                    <stop offset="100%" stop-color="rgba(123,44,191,0.2)" />
+                    <stop offset="0%" stop-color="rgba(255,77,109,0.38)" />
+                    <stop offset="100%" stop-color="rgba(123,44,191,0.22)" />
                 </linearGradient>
             </defs>
 
             <!-- Dreamy Full Glowing Moon with Multi-layered Glowing Aura -->
-            <circle cx="850" cy="140" r="140" fill="url(#moonGlow)" />
-            <circle cx="850" cy="140" r="75" fill="#fffdf8" opacity="0.98" />
+            <circle cx="850" cy="140" r="145" fill="url(#moonGlow)" />
+            <circle cx="850" cy="140" r="78" fill="#fffdf8" opacity="0.98" />
 
             <!-- Soft Dreamy Clouds -->
-            <path d="M 680 180 Q 730 130 800 160 Q 860 120 920 160 Q 980 140 1000 180 Z" fill="url(#cloudGrad)"/>
-            
+            <path d="M 680 180 Q 730 130 800 160 Q 860 120 920 160 Q 980 140 1000 180 Z" fill="url(#cloudGrad)" />
+
             <!-- Hills Backdrop -->
-            <path d="M 550 600 Q 750 410 1000 470 L 1000 600 Z" fill="#0b0314" opacity="0.92"/>
-            <path d="M 0 600 Q 320 440 680 600 Z" fill="#120524" opacity="0.96"/>
-            
+            <path d="M 550 600 Q 750 410 1000 470 L 1000 600 Z" fill="#0b0314" opacity="0.92" />
+            <path d="M 0 600 Q 320 440 680 600 Z" fill="#120524" opacity="0.96" />
+
             <!-- Cute Anime Cartoon Couple Lovers Sitting Under Moon Silhouette -->
             <g transform="translate(740, 382) scale(0.9)">
                 <!-- Girl Long Hair (Pinkish Tint Glow) -->
-                <path d="M 52 35 Q 40 45 42 75 Q 68 85 75 70 Q 78 45 68 35 Z" fill="#ff4d6d" opacity="0.9"/>
+                <path d="M 52 35 Q 40 45 42 75 Q 68 85 75 70 Q 78 45 68 35 Z" fill="#ff4d6d" opacity="0.9" />
                 <!-- Boy Head -->
                 <circle cx="44" cy="48" r="18" fill="#ffb703" />
                 <!-- Girl Head leaning on Boy's Shoulder -->
                 <circle cx="64" cy="45" r="17" fill="#ffccd5" />
-                
+
                 <!-- Boy Body / Jacket -->
                 <path d="M 22 100 Q 22 66 46 66 Q 58 66 58 100 Z" fill="#2b0938" />
                 <!-- Girl Body / Dress -->
@@ -1406,16 +1563,27 @@
 
                 <!-- Floating Glowing Red Heart Between Lovers -->
                 <g>
-                    <path d="M 54 22 C 54 16, 46 12, 46 18 C 46 24, 54 30, 54 34 C 54 30, 62 24, 62 18 C 62 12, 54 16, 54 22 Z" fill="#ff4d6d">
-                        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-12; 0,0" dur="2s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                    <path
+                        d="M 54 22 C 54 16, 46 12, 46 18 C 46 24, 54 30, 54 34 C 54 30, 62 24, 62 18 C 62 12, 54 16, 54 22 Z"
+                        fill="#ff4d6d">
+                        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-14; 0,0" dur="2.2s"
+                            repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite" />
                     </path>
                 </g>
+
+                <!-- Twinkling Romantic Fireflies around lovers -->
+                <circle cx="20" cy="40" r="3" fill="#ffe57f" opacity="0.8">
+                    <animate attributeName="opacity" values="0.2;1;0.2" dur="1.6s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="88" cy="30" r="2.5" fill="#ffccd5" opacity="0.9">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+                </circle>
             </g>
         </svg>
     </div>
 
-    <!-- Canvases for Particles, Fireworks, Stars & Shooting Meteor Shower -->
+    <!-- Canvases for Particles, Sky Lanterns, Fireworks, Stars & Shooting Meteor Shower -->
     <canvas id="particleCanvas"></canvas>
     <canvas id="starsCanvas"></canvas>
     <canvas id="shootingStarsCanvas"></canvas>
@@ -1430,7 +1598,8 @@
     <div class="top-nav">
         <div class="music-player-pill">
             <div class="vinyl-disc" id="vinyl"></div>
-            <select id="musicSelect" onchange="changeMusicPreset(this.value)" class="music-dropdown" title="Select Hindi Romantic Song">
+            <select id="musicSelect" onchange="changeMusicPreset(this.value)" class="music-dropdown"
+                title="Select Hindi Romantic Song">
                 <option value="0">🎶 1. Tum Hi Ho (Arijit Singh)</option>
                 <option value="1">🎤 2. Dil Diyan Gallan (Atif Aslam)</option>
                 <option value="2">💖 3. Tujhe Sochta Hoon (KK)</option>
@@ -1444,12 +1613,9 @@
             <button class="music-play-btn" onclick="toggleAudio()" title="Play / Pause Song">
                 <i class="fa-solid fa-play" id="playIcon"></i>
             </button>
-            <input type="file" id="localAudioInput" accept="audio/*" style="display:none;" onchange="handleCustomAudioUpload(event)">
-            <audio id="bgMusic" loop preload="auto" src="audio/tum_hi_ho.mp3"></audio>
-        </div>
-
-        <div class="nav-pill" onclick="toggleHelper()">
-            <i class="fa-solid fa-gear"></i> Guide
+            <input type="file" id="localAudioInput" accept="audio/*" style="display:none;"
+                onchange="handleCustomAudioUpload(event)">
+            <audio id="bgMusic" preload="auto" src="audio/tum_hi_ho.mp3"></audio>
         </div>
     </div>
 
@@ -1461,7 +1627,7 @@
             <div class="badge-romantic" id="statusBadge">✨ Counting Down to 11th September ✨</div>
             <h1 class="hero-title" id="mainHeroTitle">Waiting for September 11th... ❤️</h1>
             <p class="hero-subtitle" id="mainHeroSub">
-                Counting every second until your birthday! A magical surprise awaits you.
+                Counting every second until your birthday, my sweet Hridu Sona! A magical surprise awaits you.
             </p>
 
             <!-- 11th September Countdown Clock (Disappears on 11th Sept) -->
@@ -1490,34 +1656,29 @@
             </div>
 
             <!-- =========================================================================
-               11TH SEPTEMBER SPECIAL VIEW: GF SINGLE PICTURES & WISHING SPOTLIGHT
+               11TH SEPTEMBER ULTRA-HD BIGGER 10-PHOTO LOVE HEART SHAPE
                (Countdown disappears & this container automatically appears on 11th Sept)
                ========================================================================= -->
             <div class="september11-view-container" id="september11ViewContainer">
-                <div class="gf-spotlight-card">
-                    <div class="gf-photo-frame">
-                        <span class="gf-photo-badge" id="gfPhotoBadge">The Birthday Queen 👑</span>
-                        <img id="gfSinglePhotoImg" src="images/1.jpg" alt="Girlfriend Single Photo"
-                            onerror="this.src='images/cover.png'">
-                    </div>
-                    <div class="gf-wishing-content">
-                        <div class="crown-badge-header"><i class="fa-solid fa-crown"></i></div>
-                        <h2 class="gf-wishing-title" id="gfSinglePhotoTitle">Happy Birthday, My Princess! 💖</h2>
-                        <p class="gf-wishing-desc" id="gfSinglePhotoDesc">
-                            September 11th is all about you! Your smile lights up my world every single day.
-                        </p>
+                <div class="heart-mosaic-wrapper" id="heartMosaicStage">
+                    <!-- Glowing Heart Path Backdrop Vector -->
+                    <svg class="heart-svg-backdrop" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path
+                            d="M 50 22 C 40 6, 10 6, 10 34 C 10 60, 50 88, 50 88 C 50 88, 90 60, 90 34 C 90 6, 60 6, 50 22 Z"
+                            fill="rgba(255, 77, 109, 0.08)" stroke="rgba(255, 77, 109, 0.6)" stroke-width="1.8"
+                            stroke-dasharray="4 3" />
+                    </svg>
 
-                        <div class="single-photo-controls">
-                            <button class="btn-circle" onclick="prevGFSinglePhoto()" title="Previous Photo">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </button>
-                            <span id="gfPhotoCounter"
-                                style="font-size: 0.9rem; color: var(--gold-accent); font-weight:600;">Photo 1 of 4</span>
-                            <button class="btn-circle" onclick="nextGFSinglePhoto()" title="Next Photo">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </button>
-                        </div>
+                    <!-- Center Birthday Emblem Card -->
+                    <div class="heart-center-card">
+                        <div class="heart-center-crown"><i class="fa-solid fa-crown"></i></div>
+                        <h2 class="heart-center-title">Happy Birthday, My Cutie! 💖</h2>
+                        <div class="heart-center-sub">For My Sweet Hridu Sona ✨</div>
+                        <div style="font-size: 0.68rem; color: rgba(255,255,255,0.85); margin-top: 4px;">✨ Tap any photo
+                            to view ✨</div>
                     </div>
+
+                    <!-- Dynamic Precision 10 Girlfriend Photos rendered via JS -->
                 </div>
 
                 <!-- Wishing Balloons Box -->
@@ -1548,7 +1709,8 @@
         <section class="orbit-section" id="orbitSection">
             <div class="section-header">
                 <h2 class="section-title">Our Dynamic Memory Orbit 💫</h2>
-                <p class="section-desc">Our 20 sweet couple memories floating in a spacious 3D ring. Drag left or right to rotate manually!</p>
+                <p class="section-desc">Our 20 sweet couple memories floating in a spacious 3D ring. Drag left or right
+                    to rotate manually!</p>
             </div>
 
             <div class="orbit-stage-wrapper" id="orbitWrapper">
@@ -1634,28 +1796,32 @@
             <div class="coupons-grid" id="couponsGrid">
                 <div class="coupon-card">
                     <div class="coupon-title">🤗 Unlimited Hugs</div>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Redeemable anytime for endless warm hugs!</p>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Redeemable anytime for endless warm
+                        hugs!</p>
                 </div>
                 <div class="coupon-card">
                     <div class="coupon-title">🍦 Ice Cream Date</div>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">A late-night sweet ice cream date together!</p>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">A late-night sweet ice cream date
+                        together!</p>
                 </div>
                 <div class="coupon-card">
                     <div class="coupon-title">🎬 Movie Choice</div>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">You get full control over movie night!</p>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">You get full control over movie night!
+                    </p>
                 </div>
                 <div class="coupon-card">
                     <div class="coupon-title">❤️ Forever Love</div>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Infinite love and devotion, valid forever!</p>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Infinite love and devotion, valid
+                        forever!</p>
                 </div>
             </div>
         </section>
 
-        <!-- 10 Reasons Why You Are Special -->
+        <!-- 10 Reasons Flip Cards -->
         <section class="reasons-section" id="reasonsSection">
             <div class="section-header">
                 <h2 class="section-title">10 Reasons Why You Are Special 💕</h2>
-                <p class="section-desc">Click on each card to reveal why I love you so much!</p>
+                <p class="section-desc">Click on each card to reveal why I love you so much, Hridu Sona!</p>
             </div>
 
             <div class="reasons-grid" id="reasonsGrid"></div>
@@ -1666,25 +1832,25 @@
             <div class="envelope-card">
                 <h2 class="letter-heading">A Heartfelt Letter for You 💌</h2>
                 <div class="letter-body" id="letterText">
-                    My Dearest,
+                    My Dearest Hridu Sona,
                     Happy Birthday on this beautiful September 11th! 💕
                     Your sweet smile and gentle heart make every single day feel special. Thank you for being my happiness, my safe place, and my best friend.
 
                     May your year be blessed with joy, laughter, and endless success. I promise to love you and stand by your side forever.
 
-                    Happy Birthday, My Princess! 🎂🎉✨
+                    Happy Birthday, My Cutie! 🎂🎉✨
                 </div>
                 <div class="letter-signature">Always Yours ❤️</div>
             </div>
         </section>
 
         <footer>
-            Crafted with Infinite Love <i class="fa-solid fa-heart"></i> for 11th September Special Birthday
+            Crafted with Infinite Love <i class="fa-solid fa-heart"></i> for Hridu Sona's 11th September Birthday
         </footer>
 
     </div>
 
-    <!-- Story Modal -->
+    <!-- Story / Photo Preview Modal -->
     <div class="story-modal" id="storyModal">
         <div class="story-container">
             <button class="close-modal-btn" onclick="closeStoryModal()">
@@ -1718,21 +1884,10 @@
         </div>
     </div>
 
-    <!-- Helper Box -->
-    <div class="helper-box" id="helperBox">
-        <h4>
-            <span>📝 Photos & Customization Guide</span>
-            <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="toggleHelper()"></i>
-        </h4>
-        <p>1. GF Single Photos: <code>images/1.jpg</code>, <code>2.jpg</code>, <code>3.jpg</code>, <code>4.jpg</code>.</p>
-        <p>2. Couple Photos (Orbit): <code>images/c1.jpg</code>, <code>c2.jpg</code>, ... up to <code>c20.jpg</code>.</p>
-        <p>3. Select from 8 iconic Hindi romantic songs or click <b>"Upload Your Song (MP3)"</b> to play any local song!</p>
-    </div>
-
     <!-- JavaScript Engine -->
     <script>
         /* =========================================================================
-           1. 8 ICONIC HINDI ROMANTIC SONGS PLAYLIST & MULTI-TRACK SELECTION ENGINE
+           1. 8 ICONIC HINDI ROMANTIC SONGS PLAYLIST & RANDOM AUTO-NEXT ENGINE
            ========================================================================= */
         const PLAYLIST = [
             {
@@ -1777,6 +1932,28 @@
             }
         ];
 
+        let currentTrackIndex = 0;
+
+        function initAudioEngine() {
+            const audio = document.getElementById('bgMusic');
+            audio.addEventListener('ended', () => {
+                playNextRandomSong();
+            });
+        }
+
+        function playNextRandomSong() {
+            if (PLAYLIST.length <= 1) return;
+            let nextIndex;
+            do {
+                nextIndex = Math.floor(Math.random() * PLAYLIST.length);
+            } while (nextIndex === currentTrackIndex);
+
+            currentTrackIndex = nextIndex;
+            const musicSelect = document.getElementById('musicSelect');
+            musicSelect.value = String(nextIndex);
+            changeMusicPreset(String(nextIndex));
+        }
+
         function toggleAudio() {
             const audio = document.getElementById('bgMusic');
             const vinyl = document.getElementById('vinyl');
@@ -1810,6 +1987,7 @@
                 return;
             }
             const idx = parseInt(val, 10);
+            currentTrackIndex = idx;
             const audio = document.getElementById('bgMusic');
             const track = PLAYLIST[idx];
             audio.src = track.url;
@@ -1842,7 +2020,7 @@
         }
 
         /* =========================================================================
-           2. CONFIGURATION (GF SINGLE PHOTOS & 20 COUPLE PHOTOS ORBIT CONFIG)
+           2. CONFIGURATION (10 SINGLE GF PHOTOS & 20 COUPLE PHOTOS ORBIT CONFIG)
            ========================================================================= */
         const CURRENT_YEAR = new Date().getFullYear();
         let TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR}-09-11 00:00:00`;
@@ -1851,31 +2029,18 @@
             TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR + 1}-09-11 00:00:00`;
         }
 
-        const GF_SINGLE_PHOTOS = [
-            {
-                badge: "The Birthday Queen 👑",
-                image: "images/1.jpg",
-                title: "Happy Birthday, My Princess! 💖",
-                desc: "September 11th is all about you! Your smile lights up my world every single day."
-            },
-            {
-                badge: "My Favorite Smile ✨",
-                image: "images/2.jpg",
-                title: "Most Beautiful Girl 🌸",
-                desc: "Every moment with you is precious. May your day be as sweet and special as you are!"
-            },
-            {
-                badge: "Shining Star 🌟",
-                image: "images/3.jpg",
-                title: "Forever Yours ❤️",
-                desc: "Thank you for bringing so much happiness into my life. Happy Birthday, my love!"
-            },
-            {
-                badge: "My Everything 💞",
-                image: "images/4.jpg",
-                title: "You Are My Dream 💫",
-                desc: "You hold the key to my heart. Wishing you all the love and happiness in the world!"
-            }
+        // 10 Unique Personal Romantic Notes for each of the 10 Girlfriend Photos (Hridu Sona & My Cutie)
+        const GF_PHOTO_NOTES = [
+            "You are the queen of my heart, the sweetest melody in my life. Happy Birthday, My Cutie Hridu Sona! 👑💖",
+            "Your eyes carry a magical spark that makes me fall in love with you all over again every single day, Hridu Sona. ✨👀",
+            "Your beautiful smile is my favorite sight in the world. Always stay happy and keep smiling, My Cutie! 😊🌸",
+            "Being with you makes life so sweet, meaningful, and full of joy. You are my safe place, Hridu Sona. 🤗❤️",
+            "Every heartbeat of mine whispers your name. Thank you for filling my life with true happiness, My Cutie. 💓",
+            "You are my sunshine, my soulmate, and my best friend all in one. Forever yours, Hridu Sona! ☀️👑",
+            "Life with you is a gorgeous adventure. I cherish every single memory we build together, My Cutie. 📸🌟",
+            "Your gentle soul and warm heart inspire me every day. Wishing you endless blessings, Hridu Sona! 🌹💫",
+            "No matter how far we go, holding your hand will always be my happiest place, My Cutie. 🤝💕",
+            "May all your wishes, dreams, and desires come true today on your special day. Happy Birthday Hridu Sona! 🎂🎈🎉"
         ];
 
         const COUPLE_TITLES = [
@@ -1914,15 +2079,15 @@
             return {
                 id: num,
                 title: COUPLE_TITLES[i],
-                date: `Couple Memory #${num}`,
+                date: `Couple Memory`,
                 image: `images/c${num}.jpg`,
                 note: COUPLE_NOTES[i]
             };
         });
 
         const REASONS = [
-            "Your enchanting smile that brightens my darkest days 😊",
-            "The gentle way you care for me every day 💖",
+            "Your enchanting smile that brightens my darkest days, Hridu Sona 😊",
+            "The gentle way you care for me every day, My Cutie 💖",
             "Your beautiful heart and sweet soul ✨",
             "How you make simple moments feel magical 🌸",
             "Your sparkling eyes that hold my entire world 👀",
@@ -1930,21 +2095,20 @@
             "The sound of your adorable laugh 🎉",
             "Your unconditional and pure love for me 💌",
             "Every single memory we build together ⏳",
-            "You complete me in every single way ❤️"
+            "You complete me in every single way, Hridu Sona ❤️"
         ];
 
         const WISHES = {
-            1: "🌸 Wish #1: May your life be filled with endless smiles & warmth!",
+            1: "🌸 Wish #1: May your life be filled with endless smiles & warmth, Hridu Sona!",
             2: "💕 Wish #2: May our love blossom brighter with every passing day!",
-            3: "✨ Wish #3: May all your dreams and wishes come true today!"
+            3: "✨ Wish #3: May all your dreams and wishes come true today, My Cutie!"
         };
 
         /* =========================================================================
-           3. 11TH SEPTEMBER UNLOCK LOGIC
+           3. 11TH SEPTEMBER UNLOCK LOGIC & ULTRA-HD LARGER 10-PHOTO LOVE HEART CONTOUR
            ========================================================================= */
         let isBirthdayUnlocked = false;
         let isPreviewMode = false;
-        let currentGFSinglePhotoIndex = 0;
 
         function updateCountdown() {
             if (isPreviewMode) return;
@@ -1972,18 +2136,98 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
+        // 10 Spaced-out Precision Heart Positions for ultra-large photo cards
+        const GF_HEART_POSITIONS = [
+            { num: 1, left: 50, top: 22, rot: 0 },    // Top Cleft Notch
+            { num: 2, left: 71, top: 14, rot: 15 },   // Right Lobe Peak
+            { num: 3, left: 86, top: 32, rot: 30 },   // Right Outer Shoulder
+            { num: 4, left: 83, top: 55, rot: 0 },    // Right Mid Side
+            { num: 5, left: 68, top: 76, rot: -32 },  // Right Bottom Slope
+            { num: 6, left: 50, top: 89, rot: 0 },    // Bottom Tip Point
+            { num: 7, left: 32, top: 76, rot: 32 },   // Left Bottom Slope
+            { num: 8, left: 17, top: 55, rot: 0 },    // Left Mid Side
+            { num: 9, left: 14, top: 32, rot: -30 },  // Left Outer Shoulder
+            { num: 10, left: 29, top: 14, rot: -15 }  // Left Lobe Peak
+        ];
+
+        let gfHeartShuffleInterval = null;
+
+        function renderGFHeartMosaic() {
+            const stage = document.getElementById('heartMosaicStage');
+            if (!stage) return;
+
+            if (gfHeartShuffleInterval) clearInterval(gfHeartShuffleInterval);
+
+            // Remove existing photo items
+            const oldItems = stage.querySelectorAll('.heart-photo-item');
+            oldItems.forEach(el => el.remove());
+
+            GF_HEART_POSITIONS.forEach((pos, idx) => {
+                const photoNum = pos.num;
+                const photoCard = document.createElement('div');
+                photoCard.className = 'heart-photo-item';
+                photoCard.id = `gfHeartCard_${photoNum}`;
+                photoCard.style.left = `${pos.left}%`;
+                photoCard.style.top = `${pos.top}%`;
+                photoCard.style.transform = `translate(-50%, -50%) rotate(${pos.rot}deg)`;
+
+                // Layer sequentially so cards overlap continuously around the center box
+                photoCard.style.zIndex = idx + 2;
+
+                photoCard.onclick = () => openGFPhotoModal(photoNum);
+
+                photoCard.innerHTML = `
+                    <img src="images/${photoNum}.jpg" alt="Hridu Sona Photo" onerror="this.onerror=null; this.src='images/cover.png';">
+                `;
+
+                stage.appendChild(photoCard);
+            });
+
+            // Auto-shuffle photo slots smoothly every 3.8 seconds
+            gfHeartShuffleInterval = setInterval(shuffleGFHeartPositions, 3800);
+        }
+
+        function shuffleGFHeartPositions() {
+            if (!isBirthdayUnlocked) return;
+
+            // Fisher-Yates shuffle array of 10 slots
+            const slots = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            for (let i = slots.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [slots[i], slots[j]] = [slots[j], slots[i]];
+            }
+
+            // Assign each photo card (1 to 10) its new slot in the heart silhouette
+            for (let photoNum = 1; photoNum <= 10; photoNum++) {
+                const card = document.getElementById(`gfHeartCard_${photoNum}`);
+                if (!card) continue;
+
+                const slotIdx = slots[photoNum - 1];
+                const pos = GF_HEART_POSITIONS[slotIdx];
+
+                card.style.left = `${pos.left}%`;
+                card.style.top = `${pos.top}%`;
+                card.style.transform = `translate(-50%, -50%) rotate(${pos.rot}deg)`;
+                card.style.zIndex = slotIdx + 2;
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            if (isBirthdayUnlocked) renderGFHeartMosaic();
+        });
+
         function unlockBirthdayCelebration() {
             if (isBirthdayUnlocked) return;
             isBirthdayUnlocked = true;
 
             document.getElementById('countdownWrapper').style.display = "none";
 
-            document.getElementById('statusBadge').innerText = "👑 HAPPY BIRTHDAY MY QUEEN 👑";
-            document.getElementById('mainHeroTitle').innerText = "Happy Birthday, My Queen! ❤️";
+            document.getElementById('statusBadge').innerText = "👑 HAPPY BIRTHDAY MY CUTIE, HRIDU SONA 👑";
+            document.getElementById('mainHeroTitle').innerText = "Happy Birthday, My Cutie Hridu Sona! ❤️";
             document.getElementById('mainHeroSub').innerText = "Today is September 11th! Wishing you a day filled with infinite love, joy, and laughter.";
-            
+
             document.getElementById('september11ViewContainer').style.display = "block";
-            renderGFSinglePhoto();
+            renderGFHeartMosaic();
 
             startFireworks();
             triggerHeartBurst();
@@ -1999,36 +2243,50 @@
                 btn.style.background = "rgba(255, 183, 3, 0.35)";
             } else {
                 isBirthdayUnlocked = false;
+                if (gfHeartShuffleInterval) clearInterval(gfHeartShuffleInterval);
                 document.getElementById('countdownWrapper').style.display = "block";
                 document.getElementById('september11ViewContainer').style.display = "none";
 
                 document.getElementById('statusBadge').innerText = "✨ Counting Down to 11th September ✨";
                 document.getElementById('mainHeroTitle').innerText = "Waiting for September 11th... ❤️";
-                document.getElementById('mainHeroSub').innerText = "Counting every second until your birthday! A magical surprise awaits you.";
-                
+                document.getElementById('mainHeroSub').innerText = "Counting every second until your birthday, my sweet Hridu Sona! A magical surprise awaits you.";
+
                 btn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> Preview 11th Sept Surprise View`;
                 btn.style.background = "rgba(255, 255, 255, 0.1)";
                 updateCountdown();
             }
         }
 
-        function renderGFSinglePhoto() {
-            const item = GF_SINGLE_PHOTOS[currentGFSinglePhotoIndex];
-            document.getElementById('gfPhotoBadge').innerText = item.badge;
-            document.getElementById('gfSinglePhotoImg').src = item.image;
-            document.getElementById('gfSinglePhotoTitle').innerText = item.title;
-            document.getElementById('gfSinglePhotoDesc').innerText = item.desc;
-            document.getElementById('gfPhotoCounter').innerText = `Photo ${currentGFSinglePhotoIndex + 1} of ${GF_SINGLE_PHOTOS.length}`;
-        }
+        function openGFPhotoModal(photoNum) {
+            const img = document.getElementById('modalImg');
+            img.src = `images/${photoNum}.jpg`;
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = `images/cover.png`;
+            };
 
-        function nextGFSinglePhoto() {
-            currentGFSinglePhotoIndex = (currentGFSinglePhotoIndex + 1) % GF_SINGLE_PHOTOS.length;
-            renderGFSinglePhoto();
-        }
+            const titles = [
+                "My Cutie Hridu Sona 👑",
+                "Sparkling Magic ✨",
+                "Enchanting Smile 😊",
+                "My Safe Place 🤗",
+                "Heartbeat & Soul 💓",
+                "My Sunshine & Best Friend ☀️",
+                "Cherished Memories 📸",
+                "Gentle Soul & Grace 🌹",
+                "Forever Hand in Hand 🤝",
+                "Birthday Wish for Hridu Sona 🎂"
+            ];
 
-        function prevGFSinglePhoto() {
-            currentGFSinglePhotoIndex = (currentGFSinglePhotoIndex - 1 + GF_SINGLE_PHOTOS.length) % GF_SINGLE_PHOTOS.length;
-            renderGFSinglePhoto();
+            document.getElementById('modalTitle').innerText = titles[photoNum - 1] || `Happy Birthday My Cutie, Hridu Sona 💖`;
+            document.getElementById('modalDate').innerText = `Special Birthday Memory ✨`;
+            document.getElementById('modalNote').innerText = GF_PHOTO_NOTES[photoNum - 1] || `September 11th Special Photo. Your presence fills my heart with eternal love!`;
+            document.getElementById('modalCounter').innerText = `For Hridu Sona ✨`;
+
+            const controls = document.querySelector('.story-controls');
+            if (controls) controls.style.display = 'none';
+
+            document.getElementById('storyModal').classList.add('active');
         }
 
         function popWishBalloon(num) {
@@ -2066,7 +2324,6 @@
                 };
 
                 card.innerHTML = `
-                    <span class="orbit-card-tag">#${i + 1}</span>
                     <div class="orbit-img-box">
                         <img src="${item.image}" alt="${item.title}" onerror="this.src='images/1.jpg'">
                     </div>
@@ -2106,7 +2363,7 @@
 
                 const x = Math.sin(angleRad) * radius;
                 const z = Math.cos(angleRad) * radius;
-                
+
                 const opacity = (z + radius) / (2 * radius) * 0.65 + 0.35;
                 const scale = (z + radius) / (2 * radius) * 0.35 + 0.65;
                 const rotateYVal = -angleDeg;
@@ -2176,7 +2433,7 @@
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <i class="fa-solid fa-heart"></i>
-                            <span style="font-weight:600; font-size:1rem;">Reason #${index + 1}</span>
+                            <span style="font-weight:600; font-size:1rem;">Reason</span>
                             <span style="font-size:0.7rem; color:rgba(255,255,255,0.6); margin-top:4px;">(Click to flip)</span>
                         </div>
                         <div class="flip-card-back">
@@ -2204,6 +2461,8 @@
         function openStoryModal(index) {
             currentModalIndex = index;
             updateStoryModalContent();
+            const controls = document.querySelector('.story-controls');
+            if (controls) controls.style.display = 'flex';
             document.getElementById('storyModal').classList.add('active');
         }
 
@@ -2217,7 +2476,7 @@
             document.getElementById('modalTitle').innerText = item.title;
             document.getElementById('modalDate').innerText = item.date;
             document.getElementById('modalNote').innerText = item.note;
-            document.getElementById('modalCounter').innerText = `Memory ${currentModalIndex + 1} of ${MEMORIES.length}`;
+            document.getElementById('modalCounter').innerText = `Memory`;
         }
 
         function nextStory() {
@@ -2244,16 +2503,12 @@
             if (candlesBlown) return;
             candlesBlown = true;
             document.querySelectorAll('.flame').forEach(f => f.classList.add('extinguished'));
-            document.getElementById('wishInstruction').innerHTML = '🎉 Happy Birthday My Queen! May all your wishes come true! 💕';
+            document.getElementById('wishInstruction').innerHTML = '🎉 Happy Birthday My Cutie Hridu Sona! May all your wishes come true! 💕';
             confetti({ particleCount: 220, spread: 110, origin: { y: 0.7 } });
         }
 
         function scrollToSection(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function toggleHelper() {
-            document.getElementById('helperBox').classList.toggle('show');
         }
 
         /* Fireworks Engine */
@@ -2320,7 +2575,7 @@
         window.addEventListener('resize', resizeStarsCanvas);
         resizeStarsCanvas();
 
-        const stars = Array.from({ length: 45 }, () => ({
+        const stars = Array.from({ length: 50 }, () => ({
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
             size: Math.random() * 2.5 + 1,
@@ -2367,7 +2622,7 @@
 
         function animateMeteors() {
             meteorCtx.clearRect(0, 0, meteorCanvas.width, meteorCanvas.height);
-            
+
             if (Math.random() < 0.04) {
                 createMeteor();
             }
@@ -2399,7 +2654,7 @@
             requestAnimationFrame(animateMeteors);
         }
 
-        /* Particle System with Floating Cartoon Couple Emojis & Hearts */
+        /* Multilayered Particle System: Floating Sky Lanterns, Soft Rose Petals & Emojis */
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -2410,9 +2665,59 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
+        // 1. Sky Lanterns (Fanush)
+        class SkyLantern {
+            constructor() { this.reset(true); }
+            reset(initial = false) {
+                this.x = Math.random() * canvas.width;
+                this.y = initial ? Math.random() * canvas.height : canvas.height + 60;
+                this.width = Math.random() * 14 + 16;
+                this.height = this.width * 1.35;
+                this.speedY = Math.random() * 0.5 + 0.3;
+                this.sway = Math.random() * 0.02 + 0.01;
+                this.swayOffset = Math.random() * Math.PI * 2;
+                this.opacity = Math.random() * 0.55 + 0.4;
+                this.hue = Math.random() * 25 + 340;
+            }
+            update() {
+                this.y -= this.speedY;
+                this.swayOffset += this.sway;
+                this.x += Math.sin(this.swayOffset) * 0.6;
+                if (this.y < -80) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+
+                // Lantern Body Gradient
+                const grad = ctx.createLinearGradient(this.x, this.y, this.x, this.y + this.height);
+                grad.addColorStop(0, `hsla(${this.hue}, 100%, 75%, 0.95)`);
+                grad.addColorStop(0.7, `hsla(${this.hue - 10}, 100%, 55%, 0.8)`);
+                grad.addColorStop(1, `hsla(40, 100%, 50%, 0.95)`);
+
+                ctx.fillStyle = grad;
+                ctx.shadowBlur = 18;
+                ctx.shadowColor = `hsla(${this.hue}, 100%, 65%, 0.9)`;
+                ctx.beginPath();
+                ctx.roundRect(this.x - this.width / 2, this.y, this.width, this.height, 5);
+                ctx.fill();
+
+                // Inner Golden Flame Core
+                ctx.fillStyle = '#fffdf0';
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = '#ffe57f';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y + this.height - 4, 3, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.restore();
+            }
+        }
+
+        // 2. Floating Romantic Couple Emojis
         const COUPLE_EMOJIS = ['👩‍❤️‍👨', '👩‍❤️‍💋‍👨', '💖', '💕', '🧸', '🌸', '✨', '🌹'];
 
-        class Particle {
+        class EmojiParticle {
             constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * canvas.width;
@@ -2437,14 +2742,18 @@
             }
         }
 
-        const particles = Array.from({ length: 40 }, () => new Particle());
+        const skyLanterns = Array.from({ length: 15 }, () => new SkyLantern());
+        const emojiParticles = Array.from({ length: 30 }, () => new EmojiParticle());
+
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
+            skyLanterns.forEach(l => { l.update(); l.draw(); });
+            emojiParticles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animateParticles);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            initAudioEngine();
             initOrbit();
             renderReasons();
             animateParticles();
