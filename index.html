@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday My Queen! 💖 | September 11th Special</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&family=Cinzel:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --deep-rose: #c9184a;
+            --soft-pink: #ffccd5;
+            --gold-accent: #ffb703;
+            --gold-glow: #ffe57f;
+            --bg-dark: #06010f;
+            --card-glass: rgba(255, 255, 255, 0.07);
+            --card-border: rgba(255, 255, 255, 0.16);
+            --text-light: #fff0f5;
+            --font-heading: 'Dancing Script', cursive;
+            --font-subheading: 'Great Vibes', cursive;
+            --font-serif: 'Playfair Display', serif;
+            --font-royal: 'Cinzel', serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 50% 10%, rgba(255, 77, 109, 0.35) 0%, transparent 55%),
+                radial-gradient(circle at 15% 50%, rgba(201, 24, 74, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 85% 60%, rgba(123, 44, 191, 0.32) 0%, transparent 55%),
+                radial-gradient(circle at 50% 90%, rgba(255, 183, 3, 0.2) 0%, transparent 60%);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* FAIRY STRING LIGHTS ON TOP */
+        .fairy-lights-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            pointer-events: none;
+            z-index: 997;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 10px;
+        }
+
+        .fairy-bulb {
+            width: 10px;
+            height: 14px;
+            border-radius: 50% 50% 40% 40%;
+            background: #ffe57f;
+            box-shadow: 0 0 15px #ffe57f, 0 0 25px #ff4d6d;
+            animation: bulbGlow 1.8s infinite alternate;
+        }
+
+        .fairy-bulb:nth-child(even) {
+            background: #ff4d6d;
+            box-shadow: 0 0 15px #ff4d6d, 0 0 25px #ffccd5;
+            animation-delay: 0.9s;
+        }
+
+        @keyframes bulbGlow {
+            0% { opacity: 0.4; transform: scale(0.85); }
+            100% { opacity: 1; transform: scale(1.15); }
+        }
+
+        /* DYNAMIC AESTHETIC CARTOON COUPLE BACKDROP */
+        .cartoon-couple-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.72;
+            transition: opacity 0.5s ease;
+        }
+
+        .cartoon-couple-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Canvases for Particles, Fireworks, Stars & Meteor Shower */
+        #particleCanvas,
+        #fireworksCanvas,
+        #starsCanvas,
+        #shootingStarsCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        #particleCanvas { z-index: 0; }
+        #starsCanvas { z-index: 1; }
+        #shootingStarsCanvas { z-index: 2; }
+        #fireworksCanvas { z-index: 998; }
+
+        /* Top Navigation Controls & Multi-Music Selector Player */
+        .top-nav {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 999;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .music-player-pill {
+            background: rgba(15, 5, 29, 0.88);
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--primary-pink);
+            padding: 6px 12px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 32px rgba(255, 77, 109, 0.45);
+        }
+
+        .music-dropdown {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            padding: 6px 10px;
+            font-size: 0.82rem;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            max-width: 200px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .music-dropdown option {
+            background: #0d0418;
+            color: #fff;
+        }
+
+        .music-play-btn {
+            background: linear-gradient(135deg, var(--primary-pink), var(--deep-rose));
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.5);
+        }
+
+        .music-play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 77, 109, 0.8);
+        }
+
+        .nav-pill {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--card-border);
+            padding: 8px 14px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .nav-pill:hover {
+            transform: scale(1.05);
+            background: rgba(255, 77, 109, 0.3);
+            border-color: rgba(255, 77, 109, 0.5);
+        }
+
+        .vinyl-disc {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, #222 30%, #444 31%, #111 60%, #ff4d6d 61%);
+            animation: spin 3s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .vinyl-disc.playing { animation-play-state: running; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 0 50px;
+        }
+
+        .badge-romantic {
+            background: linear-gradient(135deg, var(--primary-pink), var(--deep-rose));
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px rgba(255, 77, 109, 0.6);
+            animation: pulse 2.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 77, 109, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 77, 109, 0.9); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 77, 109, 0.4); }
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 7.5vw, 6rem);
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, var(--soft-pink) 50%, var(--primary-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 18px;
+            text-shadow: 0 10px 30px rgba(255, 77, 109, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.8vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.88);
+            max-width: 720px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Countdown Clock Container (Vanish on 11th Sept) */
+        .countdown-wrapper {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 24px 28px;
+            margin-bottom: 35px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 750px;
+            width: 100%;
+            transition: all 0.5s ease;
+        }
+
+        .countdown-title-bar {
+            color: var(--gold-accent);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .countdown-box {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 14px 6px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: clamp(1.6rem, 4.5vw, 3.2rem);
+            font-family: var(--font-serif);
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, var(--soft-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* =========================================================================
+           11TH SEPTEMBER SPECIAL VIEW: GF SINGLE PICTURES & WISHING SPOTLIGHT
+           ========================================================================= */
+        .september11-view-container {
+            display: none;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 35px;
+            animation: fadeInZoom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes fadeInZoom {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .gf-spotlight-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 2px solid var(--gold-accent);
+            border-radius: 28px;
+            padding: 20px;
+            box-shadow: 0 0 60px rgba(255, 77, 109, 0.7), inset 0 0 30px rgba(255, 229, 127, 0.3);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .gf-photo-frame {
+            width: 100%;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 3px solid #fff;
+        }
+
+        .gf-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gf-spotlight-card:hover .gf-photo-frame img { transform: scale(1.06); }
+
+        .gf-photo-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--deep-rose));
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .gf-wishing-content { text-align: left; }
+
+        .crown-badge-header {
+            font-size: 2rem;
+            color: var(--gold-accent);
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 12px rgba(255, 183, 3, 0.8));
+        }
+
+        .gf-wishing-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
+        }
+
+        .gf-wishing-desc {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .single-photo-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: flex-start;
+        }
+
+        /* Wishing Balloons Box */
+        .wishing-balloons-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .wishing-balloon-btn {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 9px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wishing-balloon-btn:hover {
+            background: var(--gold-accent);
+            color: #222;
+            transform: scale(1.06) rotate(-2deg);
+            box-shadow: 0 10px 25px rgba(255, 183, 3, 0.6);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-pink), var(--deep-rose));
+            color: #fff;
+            padding: 14px 34px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid var(--card-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            color: var(--soft-pink);
+            margin-bottom: 10px;
+        }
+
+        .section-desc {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* =========================================================================
+           ULTRA-WIDE SPACED-OUT 3D MEMORY ORBIT (Dynamic Adaptive Radius)
+           ========================================================================= */
+        .orbit-section {
+            padding: 70px 0;
+            position: relative;
+        }
+
+        .orbit-stage-wrapper {
+            position: relative;
+            width: 100%;
+            height: 520px;
+            perspective: 2200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            cursor: grab;
+            user-select: none;
+            touch-action: pan-y;
+        }
+
+        .orbit-stage-wrapper:active { cursor: grabbing; }
+
+        /* Glowing 3D Orbit Floor Track */
+        .orbit-floor-ring {
+            position: absolute;
+            width: 92%;
+            max-width: 1350px;
+            height: 480px;
+            border: 2px dashed rgba(255, 183, 3, 0.3);
+            border-radius: 50%;
+            transform: rotateX(72deg) translateY(110px);
+            pointer-events: none;
+            box-shadow: 0 0 70px rgba(255, 77, 109, 0.25), inset 0 0 70px rgba(255, 183, 3, 0.25);
+            animation: ringGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes ringGlow {
+            0% { border-color: rgba(255, 183, 3, 0.25); box-shadow: 0 0 40px rgba(255, 77, 109, 0.2); }
+            100% { border-color: rgba(255, 77, 109, 0.6); box-shadow: 0 0 95px rgba(255, 183, 3, 0.6); }
+        }
+
+        .orbit-stage {
+            width: 180px;
+            height: 270px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s linear;
+        }
+
+        .orbit-card {
+            position: absolute;
+            width: 170px;
+            height: 250px;
+            left: 0;
+            top: 0;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 240, 245, 0.92));
+            border-radius: 16px;
+            padding: 9px 9px 12px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            color: #222;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            transform-origin: center center;
+        }
+
+        .orbit-card-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(201, 24, 74, 0.9);
+            color: #fff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+
+        .orbit-card:hover {
+            box-shadow: 0 25px 60px rgba(255, 77, 109, 0.9);
+            border-color: var(--primary-pink);
+        }
+
+        .orbit-img-box {
+            width: 100%;
+            height: 165px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background: #111;
+        }
+
+        .orbit-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .orbit-card:hover .orbit-img-box img { transform: scale(1.08); }
+
+        .orbit-caption {
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        .orbit-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--deep-rose);
+            line-height: 1.1;
+        }
+
+        .orbit-date {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .orbit-note-display {
+            background: var(--card-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 24px 28px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .orbit-controls-bar {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 16px;
+        }
+
+        .btn-circle {
+            background: linear-gradient(135deg, var(--primary-pink), var(--deep-rose));
+            border: none;
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(255, 77, 109, 0.6);
+        }
+
+        /* Cake Section */
+        .cake-section {
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .cake-wrapper {
+            position: relative;
+            width: 260px;
+            height: 240px;
+            margin: 0 auto 25px;
+            cursor: pointer;
+        }
+
+        .cake {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            height: 165px;
+        }
+
+        .plate {
+            width: 250px;
+            height: 18px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 0;
+            left: -15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .layer {
+            position: absolute;
+            width: 100%;
+            border-radius: 15px 15px 5px 5px;
+        }
+
+        .layer-bottom { bottom: 15px; height: 55px; background: #5c2237; }
+        .layer-middle { bottom: 65px; height: 50px; background: #ff758f; }
+        .layer-top { bottom: 110px; height: 45px; background: #ffb3c1; }
+
+        .icing {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100%;
+            height: 22px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .drip {
+            position: absolute;
+            background: #fff;
+            width: 16px;
+            height: 22px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .drip-1 { left: 10%; top: 118px; height: 26px; }
+        .drip-2 { left: 30%; top: 118px; height: 18px; }
+        .drip-3 { left: 55%; top: 118px; height: 30px; }
+        .drip-4 { left: 80%; top: 118px; height: 20px; }
+
+        .candle-container {
+            position: absolute;
+            top: 55px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 22px;
+        }
+
+        .candle {
+            width: 12px;
+            height: 50px;
+            background: repeating-linear-gradient(45deg, #ffb703, #ffb703 6px, #ffffff 6px, #ffffff 12px);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .flame {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 20px;
+            background: radial-gradient(ellipse at bottom, #ffea00 0%, #ff4d00 60%, transparent 100%);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 20px #ffea00, 0 0 40px #ff4d00;
+            animation: flicker 0.6s infinite alternate;
+            transition: all 0.5s ease;
+        }
+
+        .flame.extinguished {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+            100% { transform: translateX(-50%) scale(1.15) rotate(2deg); }
+        }
+
+        .wish-instruction {
+            color: var(--gold-accent);
+            font-size: 1.08rem;
+            font-weight: 500;
+            margin-top: 12px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Gift Box */
+        .gift-section {
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .gift-box-wrapper {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
+            position: relative;
+            cursor: pointer;
+            perspective: 600px;
+        }
+
+        .gift-box {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #c9184a, #ff4d6d);
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(201, 24, 74, 0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .gift-ribbon-v {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 26px;
+            height: 100%;
+            background: var(--gold-accent);
+        }
+
+        .gift-ribbon-h {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 26px;
+            background: var(--gold-accent);
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 54px;
+            height: 30px;
+            background: var(--gold-accent);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .coupons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 25px;
+            display: none;
+        }
+
+        .coupon-card {
+            background: linear-gradient(135deg, rgba(255, 77, 109, 0.15), rgba(255, 183, 3, 0.15));
+            border: 1px dashed var(--gold-accent);
+            border-radius: 16px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .coupon-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--soft-pink);
+            margin-bottom: 6px;
+        }
+
+        /* 10 Reasons Flip Cards */
+        .reasons-section { padding: 70px 0; }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            height: 170px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .flip-card-front {
+            background: var(--card-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            color: #fff;
+        }
+
+        .flip-card-front i {
+            font-size: 2rem;
+            color: var(--primary-pink);
+            margin-bottom: 8px;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, var(--deep-rose), var(--primary-pink));
+            color: white;
+            transform: rotateY(180deg);
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
+            font-size: 0.98rem;
+            line-height: 1.45;
+            font-weight: 500;
+        }
+
+        /* Love Letter Envelope Section */
+        .envelope-section {
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .envelope-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--card-border);
+            max-width: 750px;
+            margin: 0 auto;
+            border-radius: 26px;
+            padding: 40px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .letter-heading {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--soft-pink);
+            margin-bottom: 16px;
+        }
+
+        .letter-body {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.88);
+            font-weight: 300;
+            text-align: left;
+            margin-bottom: 25px;
+            white-space: pre-line;
+        }
+
+        .letter-signature {
+            font-family: var(--font-subheading);
+            font-size: 2.4rem;
+            color: var(--primary-pink);
+            text-align: right;
+        }
+
+        /* Story Modal */
+        .story-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 2, 16, 0.94);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .story-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .story-container {
+            width: 92%;
+            max-width: 850px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        .story-media {
+            height: 400px;
+            position: relative;
+            background: #000;
+        }
+
+        .story-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-details {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .wish-toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: rgba(201, 24, 74, 0.95);
+            border: 1px solid var(--gold-accent);
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            display: none;
+            animation: slideInRight 0.4s ease;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .helper-box {
+            position: fixed;
+            bottom: 70px;
+            left: 16px;
+            right: 16px;
+            max-width: 340px;
+            margin: 0 auto;
+            background: rgba(15, 5, 29, 0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--primary-pink);
+            border-radius: 18px;
+            padding: 18px;
+            z-index: 999;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            display: none;
+        }
+
+        .helper-box.show {
+            display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 0 20px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.88rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
+        }
+
+        footer i { color: var(--primary-pink); }
+
+        /* Mobile & Tablet Responsive Media Queries */
+        @media (max-width: 768px) {
+            .top-nav {
+                top: 12px;
+                left: 10px;
+                right: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .music-player-pill {
+                padding: 4px 10px;
+                gap: 6px;
+            }
+
+            .music-dropdown {
+                max-width: 145px;
+                font-size: 0.78rem;
+                padding: 4px 8px;
+            }
+
+            .nav-pill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 110px 0 40px;
+            }
+
+            .countdown-wrapper {
+                padding: 18px 12px;
+                border-radius: 20px;
+            }
+
+            .countdown-grid {
+                gap: 6px;
+            }
+
+            .countdown-box {
+                padding: 10px 4px;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.65rem;
+            }
+
+            .gf-spotlight-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 16px;
+                gap: 18px;
+            }
+
+            .gf-photo-frame {
+                height: 270px;
+            }
+
+            .gf-wishing-content {
+                text-align: center;
+            }
+
+            .single-photo-controls {
+                justify-content: center;
+            }
+
+            .wishing-balloon-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.84rem;
+            }
+
+            .orbit-stage-wrapper {
+                height: 440px;
+            }
+
+            .orbit-card {
+                width: 135px;
+                height: 210px;
+                padding: 7px 7px 9px;
+            }
+
+            .orbit-img-box {
+                height: 135px;
+            }
+
+            .orbit-title {
+                font-size: 1rem;
+            }
+
+            .orbit-note-display {
+                padding: 18px 14px;
+            }
+
+            .reasons-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 10px;
+            }
+
+            .flip-card {
+                height: 145px;
+            }
+
+            .flip-card-front i {
+                font-size: 1.6rem;
+            }
+
+            .flip-card-back {
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+
+            .envelope-card {
+                padding: 28px 18px;
+                border-radius: 20px;
+            }
+
+            .letter-heading {
+                font-size: 2.2rem;
+            }
+
+            .letter-body {
+                font-size: 0.98rem;
+                line-height: 1.7;
+            }
+
+            .story-container {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .story-media {
+                height: 260px;
+            }
+
+            .story-details {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .music-dropdown {
+                max-width: 120px;
+                font-size: 0.72rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .orbit-stage-wrapper {
+                height: 380px;
+            }
+
+            .orbit-card {
+                width: 118px;
+                height: 185px;
+                padding: 6px;
+            }
+
+            .orbit-card-tag {
+                top: 8px;
+                right: 8px;
+                font-size: 0.55rem;
+            }
+
+            .orbit-img-box {
+                height: 115px;
+            }
+
+            .orbit-title {
+                font-size: 0.88rem;
+            }
+
+            .orbit-date {
+                font-size: 0.62rem;
+            }
+
+            .wish-toast {
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FAIRY STRING LIGHTS TOP BANNER -->
+    <div class="fairy-lights-container">
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+    </div>
+
+    <!-- DYNAMIC AESTHETIC CARTOON LOVERS BACKDROP -->
+    <div class="cartoon-couple-bg">
+        <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMax slice">
+            <defs>
+                <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#fff0f5" stop-opacity="1" />
+                    <stop offset="30%" stop-color="#ffccd5" stop-opacity="0.8" />
+                    <stop offset="60%" stop-color="#ff4d6d" stop-opacity="0.3" />
+                    <stop offset="100%" stop-color="#7b2cbf" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(255,77,109,0.35)" />
+                    <stop offset="100%" stop-color="rgba(123,44,191,0.2)" />
+                </linearGradient>
+            </defs>
+
+            <!-- Dreamy Full Glowing Moon with Multi-layered Glowing Aura -->
+            <circle cx="850" cy="140" r="140" fill="url(#moonGlow)" />
+            <circle cx="850" cy="140" r="75" fill="#fffdf8" opacity="0.98" />
+
+            <!-- Soft Dreamy Clouds -->
+            <path d="M 680 180 Q 730 130 800 160 Q 860 120 920 160 Q 980 140 1000 180 Z" fill="url(#cloudGrad)"/>
+            
+            <!-- Hills Backdrop -->
+            <path d="M 550 600 Q 750 410 1000 470 L 1000 600 Z" fill="#0b0314" opacity="0.92"/>
+            <path d="M 0 600 Q 320 440 680 600 Z" fill="#120524" opacity="0.96"/>
+            
+            <!-- Cute Anime Cartoon Couple Lovers Sitting Under Moon Silhouette -->
+            <g transform="translate(740, 382) scale(0.9)">
+                <!-- Girl Long Hair (Pinkish Tint Glow) -->
+                <path d="M 52 35 Q 40 45 42 75 Q 68 85 75 70 Q 78 45 68 35 Z" fill="#ff4d6d" opacity="0.9"/>
+                <!-- Boy Head -->
+                <circle cx="44" cy="48" r="18" fill="#ffb703" />
+                <!-- Girl Head leaning on Boy's Shoulder -->
+                <circle cx="64" cy="45" r="17" fill="#ffccd5" />
+                
+                <!-- Boy Body / Jacket -->
+                <path d="M 22 100 Q 22 66 46 66 Q 58 66 58 100 Z" fill="#2b0938" />
+                <!-- Girl Body / Dress -->
+                <path d="M 52 100 Q 56 64 74 64 Q 86 66 86 100 Z" fill="#701235" />
+
+                <!-- Floating Glowing Red Heart Between Lovers -->
+                <g>
+                    <path d="M 54 22 C 54 16, 46 12, 46 18 C 46 24, 54 30, 54 34 C 54 30, 62 24, 62 18 C 62 12, 54 16, 54 22 Z" fill="#ff4d6d">
+                        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-12; 0,0" dur="2s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                    </path>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Canvases for Particles, Fireworks, Stars & Shooting Meteor Shower -->
+    <canvas id="particleCanvas"></canvas>
+    <canvas id="starsCanvas"></canvas>
+    <canvas id="shootingStarsCanvas"></canvas>
+    <canvas id="fireworksCanvas"></canvas>
+
+    <!-- Wish Toast -->
+    <div class="wish-toast" id="wishToast">
+        <span id="wishToastText">✨ Wish Unlocked!</span>
+    </div>
+
+    <!-- Top Navigation Controls & Multi-Music Selector Player Bar -->
+    <div class="top-nav">
+        <div class="music-player-pill">
+            <div class="vinyl-disc" id="vinyl"></div>
+            <select id="musicSelect" onchange="changeMusicPreset(this.value)" class="music-dropdown" title="Select Hindi Romantic Song">
+                <option value="0">🎶 1. Tum Hi Ho (Arijit Singh)</option>
+                <option value="1">🎤 2. Dil Diyan Gallan (Atif Aslam)</option>
+                <option value="2">💖 3. Tujhe Sochta Hoon (KK)</option>
+                <option value="3">🌸 4. Tum Tak (Raanjhanaa)</option>
+                <option value="4">💫 5. Abhi Kuch Dino Se (Mohit Chauhan)</option>
+                <option value="5">🌙 6. Sunn Raha Hai Na Tu (Ankit Tiwari)</option>
+                <option value="6">✨ 7. Te Amo (Ash King)</option>
+                <option value="7">🌹 8. Aaoge Jab Tum (Ustad Rashid Khan)</option>
+                <option value="custom">📁 Upload Your Song (MP3)...</option>
+            </select>
+            <button class="music-play-btn" onclick="toggleAudio()" title="Play / Pause Song">
+                <i class="fa-solid fa-play" id="playIcon"></i>
+            </button>
+            <input type="file" id="localAudioInput" accept="audio/*" style="display:none;" onchange="handleCustomAudioUpload(event)">
+            <audio id="bgMusic" loop preload="auto" src="audio/tum_hi_ho.mp3"></audio>
+        </div>
+
+        <div class="nav-pill" onclick="toggleHelper()">
+            <i class="fa-solid fa-gear"></i> Guide
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Hero Section with 11th September Countdown & Unlocked Single Photos View -->
+        <section class="hero">
+            <div class="badge-romantic" id="statusBadge">✨ Counting Down to 11th September ✨</div>
+            <h1 class="hero-title" id="mainHeroTitle">Waiting for September 11th... ❤️</h1>
+            <p class="hero-subtitle" id="mainHeroSub">
+                Counting every second until your birthday! A magical surprise awaits you.
+            </p>
+
+            <!-- 11th September Countdown Clock (Disappears on 11th Sept) -->
+            <div class="countdown-wrapper" id="countdownWrapper">
+                <div class="countdown-title-bar">
+                    <i class="fa-solid fa-clock"></i> 11TH SEPTEMBER BIRTHDAY COUNTDOWN
+                </div>
+                <div class="countdown-grid">
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="cdDays">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="cdHours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="cdMins">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="cdSecs">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =========================================================================
+               11TH SEPTEMBER SPECIAL VIEW: GF SINGLE PICTURES & WISHING SPOTLIGHT
+               (Countdown disappears & this container automatically appears on 11th Sept)
+               ========================================================================= -->
+            <div class="september11-view-container" id="september11ViewContainer">
+                <div class="gf-spotlight-card">
+                    <div class="gf-photo-frame">
+                        <span class="gf-photo-badge" id="gfPhotoBadge">The Birthday Queen 👑</span>
+                        <img id="gfSinglePhotoImg" src="images/1.jpg" alt="Girlfriend Single Photo"
+                            onerror="this.src='images/cover.png'">
+                    </div>
+                    <div class="gf-wishing-content">
+                        <div class="crown-badge-header"><i class="fa-solid fa-crown"></i></div>
+                        <h2 class="gf-wishing-title" id="gfSinglePhotoTitle">Happy Birthday, My Princess! 💖</h2>
+                        <p class="gf-wishing-desc" id="gfSinglePhotoDesc">
+                            September 11th is all about you! Your smile lights up my world every single day.
+                        </p>
+
+                        <div class="single-photo-controls">
+                            <button class="btn-circle" onclick="prevGFSinglePhoto()" title="Previous Photo">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <span id="gfPhotoCounter"
+                                style="font-size: 0.9rem; color: var(--gold-accent); font-weight:600;">Photo 1 of 4</span>
+                            <button class="btn-circle" onclick="nextGFSinglePhoto()" title="Next Photo">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wishing Balloons Box -->
+                <div class="wishing-balloons-container">
+                    <button class="wishing-balloon-btn" onclick="popWishBalloon(1)">
+                        🎈 Wish #1: Endless Smiles & Joy
+                    </button>
+                    <button class="wishing-balloon-btn" onclick="popWishBalloon(2)">
+                        🎈 Wish #2: Forever Together ❤️
+                    </button>
+                    <button class="wishing-balloon-btn" onclick="popWishBalloon(3)">
+                        🎈 Wish #3: Dreams Come True ✨
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('orbitSection')">
+                    <i class="fa-solid fa-rotate"></i> Dynamic Memory Orbit
+                </button>
+                <button class="btn-secondary" onclick="togglePreviewBirthdayView()" id="previewToggleBtn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Preview 11th Sept Surprise View
+                </button>
+            </div>
+        </section>
+
+        <!-- DYNAMIC CONTINUOUS ROTATING MEMORY ORBIT (20 Couple Photos with Extra Wide Gaps) -->
+        <section class="orbit-section" id="orbitSection">
+            <div class="section-header">
+                <h2 class="section-title">Our Dynamic Memory Orbit 💫</h2>
+                <p class="section-desc">Our 20 sweet couple memories floating in a spacious 3D ring. Drag left or right to rotate manually!</p>
+            </div>
+
+            <div class="orbit-stage-wrapper" id="orbitWrapper">
+                <div class="orbit-floor-ring"></div>
+                <div class="orbit-stage" id="orbitStage"></div>
+            </div>
+
+            <div class="orbit-note-display">
+                <div style="color: var(--gold-accent); font-size:0.9rem; font-weight:600; margin-bottom:8px;"
+                    id="orbitActiveTitle">
+                    First Sight ✨
+                </div>
+                <p style="font-size: 1.15rem; line-height: 1.8; color: rgba(255,255,255,0.9);" id="orbitActiveNote">
+                    "The day I saw your lovely smile, my world changed forever."
+                </p>
+                <div class="orbit-controls-bar">
+                    <button class="btn-circle" onclick="rotateOrbitStep(-1)" title="Rotate Left">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="btn-primary" style="padding: 10px 24px; font-size: 0.95rem;"
+                        onclick="toggleOrbitAutoPlay()" id="orbitPlayBtn">
+                        <i class="fa-solid fa-pause"></i> Pause Orbit
+                    </button>
+                    <button class="btn-circle" onclick="rotateOrbitStep(1)" title="Rotate Right">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Birthday Cake Section -->
+        <section class="cake-section" id="cakeSection">
+            <div class="section-header">
+                <h2 class="section-title">Make a Birthday Wish 🎂</h2>
+                <p class="section-desc">Click or tap on the candles to blow them out and make a wish!</p>
+            </div>
+
+            <div class="cake-wrapper" id="cakeWrapper" onclick="blowCandles()">
+                <div class="candle-container">
+                    <div class="candle">
+                        <div class="flame" id="flame1"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame" id="flame2"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame" id="flame3"></div>
+                    </div>
+                </div>
+                <div class="cake">
+                    <div class="plate"></div>
+                    <div class="layer layer-bottom"></div>
+                    <div class="layer layer-middle"></div>
+                    <div class="layer layer-top"></div>
+                    <div class="icing"></div>
+                    <div class="drip drip-1"></div>
+                    <div class="drip drip-2"></div>
+                    <div class="drip drip-3"></div>
+                    <div class="drip drip-4"></div>
+                </div>
+            </div>
+
+            <div class="wish-instruction" id="wishInstruction">
+                👇 Tap the candles to blow them out! ✨
+            </div>
+        </section>
+
+        <!-- Surprise Gift Box Section -->
+        <section class="gift-section" id="giftSection">
+            <div class="section-header">
+                <h2 class="section-title">Surprise Gift Box 🎁</h2>
+                <p class="section-desc">Click the gift box to unwrap your special romantic coupons!</p>
+            </div>
+
+            <div class="gift-box-wrapper" onclick="openSurpriseGift()">
+                <div class="gift-box" id="giftBox">
+                    <div class="gift-bow"></div>
+                    <div class="gift-ribbon-v"></div>
+                    <div class="gift-ribbon-h"></div>
+                </div>
+            </div>
+
+            <div class="coupons-grid" id="couponsGrid">
+                <div class="coupon-card">
+                    <div class="coupon-title">🤗 Unlimited Hugs</div>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Redeemable anytime for endless warm hugs!</p>
+                </div>
+                <div class="coupon-card">
+                    <div class="coupon-title">🍦 Ice Cream Date</div>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">A late-night sweet ice cream date together!</p>
+                </div>
+                <div class="coupon-card">
+                    <div class="coupon-title">🎬 Movie Choice</div>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">You get full control over movie night!</p>
+                </div>
+                <div class="coupon-card">
+                    <div class="coupon-title">❤️ Forever Love</div>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Infinite love and devotion, valid forever!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10 Reasons Why You Are Special -->
+        <section class="reasons-section" id="reasonsSection">
+            <div class="section-header">
+                <h2 class="section-title">10 Reasons Why You Are Special 💕</h2>
+                <p class="section-desc">Click on each card to reveal why I love you so much!</p>
+            </div>
+
+            <div class="reasons-grid" id="reasonsGrid"></div>
+        </section>
+
+        <!-- Love Letter Section -->
+        <section class="envelope-section" id="letterSection">
+            <div class="envelope-card">
+                <h2 class="letter-heading">A Heartfelt Letter for You 💌</h2>
+                <div class="letter-body" id="letterText">
+                    My Dearest,
+                    Happy Birthday on this beautiful September 11th! 💕
+                    Your sweet smile and gentle heart make every single day feel special. Thank you for being my happiness, my safe place, and my best friend.
+
+                    May your year be blessed with joy, laughter, and endless success. I promise to love you and stand by your side forever.
+
+                    Happy Birthday, My Princess! 🎂🎉✨
+                </div>
+                <div class="letter-signature">Always Yours ❤️</div>
+            </div>
+        </section>
+
+        <footer>
+            Crafted with Infinite Love <i class="fa-solid fa-heart"></i> for 11th September Special Birthday
+        </footer>
+
+    </div>
+
+    <!-- Story Modal -->
+    <div class="story-modal" id="storyModal">
+        <div class="story-container">
+            <button class="close-modal-btn" onclick="closeStoryModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="story-media">
+                <img id="modalImg" src="" alt="Memory Image">
+            </div>
+            <div class="story-details">
+                <div>
+                    <div class="story-header">
+                        <span class="story-counter" id="modalCounter">Memory 1 of 20</span>
+                        <span id="modalDate" style="color: var(--gold-accent); font-size: 0.9rem;"></span>
+                    </div>
+                    <h3 class="story-title" id="modalTitle">First Memory</h3>
+                    <p class="story-text" id="modalNote">Note goes here...</p>
+                </div>
+                <div class="story-controls">
+                    <button class="btn-circle" style="width:40px; height:40px; font-size:0.9rem;" onclick="prevStory()">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="btn-primary" style="padding: 10px 22px; font-size: 0.95rem;"
+                        onclick="triggerHeartBurst()">
+                        <i class="fa-solid fa-heart"></i> Send Love
+                    </button>
+                    <button class="btn-circle" style="width:40px; height:40px; font-size:0.9rem;" onclick="nextStory()">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Helper Box -->
+    <div class="helper-box" id="helperBox">
+        <h4>
+            <span>📝 Photos & Customization Guide</span>
+            <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="toggleHelper()"></i>
+        </h4>
+        <p>1. GF Single Photos: <code>images/1.jpg</code>, <code>2.jpg</code>, <code>3.jpg</code>, <code>4.jpg</code>.</p>
+        <p>2. Couple Photos (Orbit): <code>images/c1.jpg</code>, <code>c2.jpg</code>, ... up to <code>c20.jpg</code>.</p>
+        <p>3. Select from 8 iconic Hindi romantic songs or click <b>"Upload Your Song (MP3)"</b> to play any local song!</p>
+    </div>
+
+    <!-- JavaScript Engine -->
+    <script>
+        /* =========================================================================
+           1. 8 ICONIC HINDI ROMANTIC SONGS PLAYLIST & MULTI-TRACK SELECTION ENGINE
+           ========================================================================= */
+        const PLAYLIST = [
+            {
+                title: "Tum Hi Ho (Arijit Singh)",
+                url: "audio/tum_hi_ho.mp3",
+                fallback: "https://archive.org/download/hindinepalisongs/01.%20Tum%20Hi%20Ho%20-%20Aashiqui%202.mp3"
+            },
+            {
+                title: "Dil Diyan Gallan (Atif Aslam)",
+                url: "audio/dil_diyan_gallan.mp3",
+                fallback: "https://archive.org/download/monsterkill_201805/Dil%20Diyan%20Gallan%20Song%20_%20Tiger%20Zinda%20Hai%20_%20Salman%20Khan%20_%20Katrina%20Kaif%20_%20Atif%20Aslam%28mp3%29.mp3"
+            },
+            {
+                title: "Tujhe Sochta Hoon (KK)",
+                url: "audio/tujhe_sochta_hoon.mp3",
+                fallback: "https://archive.org/download/hindinepalisongs/03%20-%20Jannat%202%20-%20Tujhe%20Sochta%20Hoon%20%5B320kbps%5D~~~DeStInY_ShInE.mp3"
+            },
+            {
+                title: "Tum Tak (Raanjhanaa)",
+                url: "audio/tum_tak.mp3",
+                fallback: "https://archive.org/download/hindinepalisongs/09%20-%20Raanjhanaa%20-%20Tum%20Tak%20%5BDJMaza%5D.mp3"
+            },
+            {
+                title: "Abhi Kuch Dino Se (Mohit Chauhan)",
+                url: "audio/abhi_kuch_dino_se.mp3",
+                fallback: "https://archive.org/download/hindinepalisongs/01%20-%20Abhi%20Kuch%20Dino%20Se.mp3"
+            },
+            {
+                title: "Sunn Raha Hai Na Tu (Ankit Tiwari)",
+                url: "audio/sunn_raha_hai.mp3",
+                fallback: "https://archive.org/download/hindinepalisongs/02.%20Sunn%20Raha%20Hai%20-%20Aashiqui%202.Mp3"
+            },
+            {
+                title: "Te Amo (Ash King & Sunidhi)",
+                url: "audio/te_amo.mp3",
+                fallback: "https://archive.org/download/hindinepalisongs/02-te%20amo.MP3"
+            },
+            {
+                title: "Aaoge Jab Tum (Ustad Rashid Khan)",
+                url: "audio/aaoge_jab_tum.mp3",
+                fallback: "https://archive.org/download/hindinepalisongs/Aaoge%20jab%20tum.mp3"
+            }
+        ];
+
+        function toggleAudio() {
+            const audio = document.getElementById('bgMusic');
+            const vinyl = document.getElementById('vinyl');
+            const icon = document.getElementById('playIcon');
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    vinyl.classList.add('playing');
+                    icon.className = "fa-solid fa-pause";
+                }).catch(err => {
+                    console.warn("Audio playback issue, attempting fallback:", err);
+                    const currentIdx = parseInt(document.getElementById('musicSelect').value, 10) || 0;
+                    if (PLAYLIST[currentIdx] && PLAYLIST[currentIdx].fallback) {
+                        audio.src = PLAYLIST[currentIdx].fallback;
+                        audio.play().then(() => {
+                            vinyl.classList.add('playing');
+                            icon.className = "fa-solid fa-pause";
+                        }).catch(e => console.error(e));
+                    }
+                });
+            } else {
+                audio.pause();
+                vinyl.classList.remove('playing');
+                icon.className = "fa-solid fa-play";
+            }
+        }
+
+        function changeMusicPreset(val) {
+            if (val === "custom") {
+                document.getElementById('localAudioInput').click();
+                return;
+            }
+            const idx = parseInt(val, 10);
+            const audio = document.getElementById('bgMusic');
+            const track = PLAYLIST[idx];
+            audio.src = track.url;
+            audio.load();
+            audio.play().then(() => {
+                document.getElementById('vinyl').classList.add('playing');
+                document.getElementById('playIcon').className = "fa-solid fa-pause";
+            }).catch(err => {
+                console.warn("Loading fallback URL...");
+                audio.src = track.fallback;
+                audio.load();
+                audio.play().then(() => {
+                    document.getElementById('vinyl').classList.add('playing');
+                    document.getElementById('playIcon').className = "fa-solid fa-pause";
+                });
+            });
+        }
+
+        function handleCustomAudioUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const objectUrl = URL.createObjectURL(file);
+            const audio = document.getElementById('bgMusic');
+            audio.src = objectUrl;
+            audio.load();
+            audio.play().then(() => {
+                document.getElementById('vinyl').classList.add('playing');
+                document.getElementById('playIcon').className = "fa-solid fa-pause";
+            }).catch(e => console.log(e));
+        }
+
+        /* =========================================================================
+           2. CONFIGURATION (GF SINGLE PHOTOS & 20 COUPLE PHOTOS ORBIT CONFIG)
+           ========================================================================= */
+        const CURRENT_YEAR = new Date().getFullYear();
+        let TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR}-09-11 00:00:00`;
+
+        if (new Date().getTime() > new Date(TARGET_BIRTHDAY_DATE).getTime() && new Date().getMonth() === 8 && new Date().getDate() > 11) {
+            TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR + 1}-09-11 00:00:00`;
+        }
+
+        const GF_SINGLE_PHOTOS = [
+            {
+                badge: "The Birthday Queen 👑",
+                image: "images/1.jpg",
+                title: "Happy Birthday, My Princess! 💖",
+                desc: "September 11th is all about you! Your smile lights up my world every single day."
+            },
+            {
+                badge: "My Favorite Smile ✨",
+                image: "images/2.jpg",
+                title: "Most Beautiful Girl 🌸",
+                desc: "Every moment with you is precious. May your day be as sweet and special as you are!"
+            },
+            {
+                badge: "Shining Star 🌟",
+                image: "images/3.jpg",
+                title: "Forever Yours ❤️",
+                desc: "Thank you for bringing so much happiness into my life. Happy Birthday, my love!"
+            },
+            {
+                badge: "My Everything 💞",
+                image: "images/4.jpg",
+                title: "You Are My Dream 💫",
+                desc: "You hold the key to my heart. Wishing you all the love and happiness in the world!"
+            }
+        ];
+
+        const COUPLE_TITLES = [
+            "First Sight ✨", "Sweet Date ☕", "Special Moments 🌸", "Late Night Talks 🌙",
+            "Our Smiles 😊", "Romantic Walks 🚶‍♂️", "Pure Love 💕", "Precious Memory 📸",
+            "Unforgettable Day 🎉", "Forever Hand in Hand 🤝", "Best Companion 🌟", "Cozy Evening ☕",
+            "Sparkling Joy ✨", "Endless Laughter 😂", "Heartbeats Together ❤️", "Beautiful Sunset 🌅",
+            "Soulmates Forever 💫", "Golden Hour ☀️", "My Favorite Person 👑", "Eternal Love 💞"
+        ];
+
+        const COUPLE_NOTES = [
+            "The day I saw your lovely smile, my world changed forever.",
+            "Sharing coffee and endless laughs with you is my favorite time.",
+            "Every single moment with you turns into a cherished treasure.",
+            "Staying up late just listening to your voice makes my day.",
+            "Your bright smile is the sweetest sight in the entire world.",
+            "Walking beside you holding your hand makes me feel complete.",
+            "You are the most precious gift life has ever brought to me.",
+            "Capturing this happy moment with you forever in my heart.",
+            "An unforgettable day filled with joy, laughter, and romance.",
+            "No matter where life takes us, I will always hold your hand.",
+            "You are not just my love, you are my best friend and soulmate.",
+            "Simple cozy evenings with you are better than anything else.",
+            "Your presence brings light and magic into every corner of my life.",
+            "Laughter with you feels like sunshine on a cloudy day.",
+            "My heart beats faster every time you look into my eyes.",
+            "Watching sunsets together and dreaming of our beautiful future.",
+            "We belong together today, tomorrow, and for all eternity.",
+            "Surrounded by golden light, but you are the brightest star.",
+            "You will always be my favorite person in the whole universe.",
+            "Here's to a lifetime of love, happiness, and togetherness."
+        ];
+
+        const MEMORIES = Array.from({ length: 20 }, (_, i) => {
+            const num = i + 1;
+            return {
+                id: num,
+                title: COUPLE_TITLES[i],
+                date: `Couple Memory #${num}`,
+                image: `images/c${num}.jpg`,
+                note: COUPLE_NOTES[i]
+            };
+        });
+
+        const REASONS = [
+            "Your enchanting smile that brightens my darkest days 😊",
+            "The gentle way you care for me every day 💖",
+            "Your beautiful heart and sweet soul ✨",
+            "How you make simple moments feel magical 🌸",
+            "Your sparkling eyes that hold my entire world 👀",
+            "Always standing by my side through everything 🤝",
+            "The sound of your adorable laugh 🎉",
+            "Your unconditional and pure love for me 💌",
+            "Every single memory we build together ⏳",
+            "You complete me in every single way ❤️"
+        ];
+
+        const WISHES = {
+            1: "🌸 Wish #1: May your life be filled with endless smiles & warmth!",
+            2: "💕 Wish #2: May our love blossom brighter with every passing day!",
+            3: "✨ Wish #3: May all your dreams and wishes come true today!"
+        };
+
+        /* =========================================================================
+           3. 11TH SEPTEMBER UNLOCK LOGIC
+           ========================================================================= */
+        let isBirthdayUnlocked = false;
+        let isPreviewMode = false;
+        let currentGFSinglePhotoIndex = 0;
+
+        function updateCountdown() {
+            if (isPreviewMode) return;
+
+            const targetTime = new Date(TARGET_BIRTHDAY_DATE).getTime();
+            const now = new Date().getTime();
+            const diff = targetTime - now;
+
+            if (diff <= 0) {
+                unlockBirthdayCelebration();
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cdDays').innerText = String(days).padStart(2, '0');
+            document.getElementById('cdHours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cdMins').innerText = String(mins).padStart(2, '0');
+            document.getElementById('cdSecs').innerText = String(secs).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function unlockBirthdayCelebration() {
+            if (isBirthdayUnlocked) return;
+            isBirthdayUnlocked = true;
+
+            document.getElementById('countdownWrapper').style.display = "none";
+
+            document.getElementById('statusBadge').innerText = "👑 HAPPY BIRTHDAY MY QUEEN 👑";
+            document.getElementById('mainHeroTitle').innerText = "Happy Birthday, My Queen! ❤️";
+            document.getElementById('mainHeroSub').innerText = "Today is September 11th! Wishing you a day filled with infinite love, joy, and laughter.";
+            
+            document.getElementById('september11ViewContainer').style.display = "block";
+            renderGFSinglePhoto();
+
+            startFireworks();
+            triggerHeartBurst();
+        }
+
+        function togglePreviewBirthdayView() {
+            isPreviewMode = !isPreviewMode;
+            const btn = document.getElementById('previewToggleBtn');
+
+            if (isPreviewMode) {
+                unlockBirthdayCelebration();
+                btn.innerHTML = `<i class="fa-solid fa-clock"></i> Switch Back to Countdown`;
+                btn.style.background = "rgba(255, 183, 3, 0.35)";
+            } else {
+                isBirthdayUnlocked = false;
+                document.getElementById('countdownWrapper').style.display = "block";
+                document.getElementById('september11ViewContainer').style.display = "none";
+
+                document.getElementById('statusBadge').innerText = "✨ Counting Down to 11th September ✨";
+                document.getElementById('mainHeroTitle').innerText = "Waiting for September 11th... ❤️";
+                document.getElementById('mainHeroSub').innerText = "Counting every second until your birthday! A magical surprise awaits you.";
+                
+                btn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> Preview 11th Sept Surprise View`;
+                btn.style.background = "rgba(255, 255, 255, 0.1)";
+                updateCountdown();
+            }
+        }
+
+        function renderGFSinglePhoto() {
+            const item = GF_SINGLE_PHOTOS[currentGFSinglePhotoIndex];
+            document.getElementById('gfPhotoBadge').innerText = item.badge;
+            document.getElementById('gfSinglePhotoImg').src = item.image;
+            document.getElementById('gfSinglePhotoTitle').innerText = item.title;
+            document.getElementById('gfSinglePhotoDesc').innerText = item.desc;
+            document.getElementById('gfPhotoCounter').innerText = `Photo ${currentGFSinglePhotoIndex + 1} of ${GF_SINGLE_PHOTOS.length}`;
+        }
+
+        function nextGFSinglePhoto() {
+            currentGFSinglePhotoIndex = (currentGFSinglePhotoIndex + 1) % GF_SINGLE_PHOTOS.length;
+            renderGFSinglePhoto();
+        }
+
+        function prevGFSinglePhoto() {
+            currentGFSinglePhotoIndex = (currentGFSinglePhotoIndex - 1 + GF_SINGLE_PHOTOS.length) % GF_SINGLE_PHOTOS.length;
+            renderGFSinglePhoto();
+        }
+
+        function popWishBalloon(num) {
+            confetti({
+                particleCount: 80,
+                spread: 70,
+                origin: { y: 0.5 },
+                colors: ['#ffb703', '#ff4d6d', '#ffffff']
+            });
+            const toast = document.getElementById('wishToast');
+            document.getElementById('wishToastText').innerText = WISHES[num];
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+
+        /* =========================================================================
+           4. ADAPTIVE 3D MEMORY ORBIT ROTATION (Auto-Scales for Mobile & Desktop)
+           ========================================================================= */
+        let orbitAngle = 0;
+        let isOrbitPlaying = true;
+        let activeOrbitIndex = 0;
+
+        function initOrbit() {
+            const stage = document.getElementById('orbitStage');
+            stage.innerHTML = '';
+
+            MEMORIES.forEach((item, i) => {
+                const card = document.createElement('div');
+                card.className = 'orbit-card';
+                card.id = `orbitCard_${i}`;
+
+                card.onclick = () => {
+                    activeOrbitIndex = i;
+                    openStoryModal(i);
+                };
+
+                card.innerHTML = `
+                    <span class="orbit-card-tag">#${i + 1}</span>
+                    <div class="orbit-img-box">
+                        <img src="${item.image}" alt="${item.title}" onerror="this.src='images/1.jpg'">
+                    </div>
+                    <div class="orbit-caption">
+                        <div class="orbit-title">${item.title}</div>
+                        <div class="orbit-date"><i class="fa-regular fa-calendar-heart"></i> ${item.date}</div>
+                    </div>
+                `;
+                stage.appendChild(card);
+            });
+
+            setupOrbitDragInteraction();
+            animateOrbit();
+        }
+
+        function getAdaptiveRadius() {
+            const width = window.innerWidth;
+            if (width <= 480) return 360;
+            if (width <= 768) return 500;
+            return 750;
+        }
+
+        function animateOrbit() {
+            if (isOrbitPlaying) {
+                orbitAngle += 0.22;
+            }
+
+            const count = MEMORIES.length;
+            const radius = getAdaptiveRadius();
+
+            MEMORIES.forEach((item, i) => {
+                const card = document.getElementById(`orbitCard_${i}`);
+                if (!card) return;
+
+                const angleDeg = (360 / count) * i + orbitAngle;
+                const angleRad = (angleDeg * Math.PI) / 180;
+
+                const x = Math.sin(angleRad) * radius;
+                const z = Math.cos(angleRad) * radius;
+                
+                const opacity = (z + radius) / (2 * radius) * 0.65 + 0.35;
+                const scale = (z + radius) / (2 * radius) * 0.35 + 0.65;
+                const rotateYVal = -angleDeg;
+
+                card.style.transform = `translate3d(${x}px, ${Math.sin(angleRad * 2) * 12}px, ${z}px) rotateY(${rotateYVal}deg) scale(${scale})`;
+                card.style.zIndex = Math.round(z + radius);
+                card.style.opacity = opacity;
+
+                if (z > radius * 0.82 && activeOrbitIndex !== i) {
+                    activeOrbitIndex = i;
+                    document.getElementById('orbitActiveTitle').innerText = MEMORIES[i].title;
+                    document.getElementById('orbitActiveNote').innerText = `"${MEMORIES[i].note}"`;
+                }
+            });
+
+            requestAnimationFrame(animateOrbit);
+        }
+
+        function setupOrbitDragInteraction() {
+            const wrapper = document.getElementById('orbitWrapper');
+            let isDragging = false;
+            let startX = 0;
+
+            wrapper.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+            });
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                orbitAngle += deltaX * 0.08;
+                startX = e.clientX;
+            });
+            window.addEventListener('mouseup', () => { isDragging = false; });
+
+            wrapper.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+            });
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.touches[0].clientX - startX;
+                orbitAngle += deltaX * 0.12;
+                startX = e.touches[0].clientX;
+            });
+            window.addEventListener('touchend', () => { isDragging = false; });
+        }
+
+        function toggleOrbitAutoPlay() {
+            isOrbitPlaying = !isOrbitPlaying;
+            const btn = document.getElementById('orbitPlayBtn');
+            btn.innerHTML = isOrbitPlaying ? `<i class="fa-solid fa-pause"></i> Pause Orbit` : `<i class="fa-solid fa-play"></i> Resume Orbit`;
+        }
+
+        function rotateOrbitStep(dir) {
+            orbitAngle += dir * (360 / MEMORIES.length);
+        }
+
+        function renderReasons() {
+            const container = document.getElementById('reasonsGrid');
+            container.innerHTML = '';
+            REASONS.forEach((reason, index) => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.onclick = () => card.classList.toggle('flipped');
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fa-solid fa-heart"></i>
+                            <span style="font-weight:600; font-size:1rem;">Reason #${index + 1}</span>
+                            <span style="font-size:0.7rem; color:rgba(255,255,255,0.6); margin-top:4px;">(Click to flip)</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>${reason}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        let giftOpened = false;
+        function openSurpriseGift() {
+            if (giftOpened) return;
+            giftOpened = true;
+            document.getElementById('giftBox').style.transform = 'rotateY(180deg) scale(0)';
+            setTimeout(() => {
+                document.getElementById('giftBox').style.display = 'none';
+                document.getElementById('couponsGrid').style.display = 'grid';
+                confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            }, 400);
+        }
+
+        let currentModalIndex = 0;
+        function openStoryModal(index) {
+            currentModalIndex = index;
+            updateStoryModalContent();
+            document.getElementById('storyModal').classList.add('active');
+        }
+
+        function closeStoryModal() {
+            document.getElementById('storyModal').classList.remove('active');
+        }
+
+        function updateStoryModalContent() {
+            const item = MEMORIES[currentModalIndex];
+            document.getElementById('modalImg').src = item.image;
+            document.getElementById('modalTitle').innerText = item.title;
+            document.getElementById('modalDate').innerText = item.date;
+            document.getElementById('modalNote').innerText = item.note;
+            document.getElementById('modalCounter').innerText = `Memory ${currentModalIndex + 1} of ${MEMORIES.length}`;
+        }
+
+        function nextStory() {
+            currentModalIndex = (currentModalIndex + 1) % MEMORIES.length;
+            updateStoryModalContent();
+        }
+
+        function prevStory() {
+            currentModalIndex = (currentModalIndex - 1 + MEMORIES.length) % MEMORIES.length;
+            updateStoryModalContent();
+        }
+
+        function triggerHeartBurst() {
+            confetti({
+                particleCount: 60,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff4d6d', '#ffccd5', '#ffb703']
+            });
+        }
+
+        let candlesBlown = false;
+        function blowCandles() {
+            if (candlesBlown) return;
+            candlesBlown = true;
+            document.querySelectorAll('.flame').forEach(f => f.classList.add('extinguished'));
+            document.getElementById('wishInstruction').innerHTML = '🎉 Happy Birthday My Queen! May all your wishes come true! 💕';
+            confetti({ particleCount: 220, spread: 110, origin: { y: 0.7 } });
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleHelper() {
+            document.getElementById('helperBox').classList.toggle('show');
+        }
+
+        /* Fireworks Engine */
+        const fwCanvas = document.getElementById('fireworksCanvas');
+        const fwCtx = fwCanvas.getContext('2d');
+        let fireworks = [];
+
+        function resizeFwCanvas() {
+            fwCanvas.width = window.innerWidth;
+            fwCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeFwCanvas);
+        resizeFwCanvas();
+
+        function startFireworks() {
+            setInterval(() => {
+                if (isBirthdayUnlocked) {
+                    createFirework(Math.random() * fwCanvas.width, Math.random() * (fwCanvas.height * 0.5));
+                }
+            }, 550);
+            animateFireworks();
+        }
+
+        function createFirework(x, y) {
+            const count = 35;
+            for (let i = 0; i < count; i++) {
+                const angle = (Math.PI * 2 / count) * i;
+                const speed = Math.random() * 3.5 + 2;
+                fireworks.push({
+                    x: x, y: y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    alpha: 1,
+                    color: `hsl(${Math.random() * 60 + 330}, 100%, 65%)`
+                });
+            }
+        }
+
+        function animateFireworks() {
+            fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
+            fireworks.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.015;
+                fwCtx.globalAlpha = Math.max(0, p.alpha);
+                fwCtx.fillStyle = p.color;
+                fwCtx.beginPath();
+                fwCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                fwCtx.fill();
+
+                if (p.alpha <= 0) fireworks.splice(i, 1);
+            });
+            requestAnimationFrame(animateFireworks);
+        }
+
+        /* Golden Star Rain Canvas */
+        const starsCanvas = document.getElementById('starsCanvas');
+        const starsCtx = starsCanvas.getContext('2d');
+
+        function resizeStarsCanvas() {
+            starsCanvas.width = window.innerWidth;
+            starsCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeStarsCanvas);
+        resizeStarsCanvas();
+
+        const stars = Array.from({ length: 45 }, () => ({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            size: Math.random() * 2.5 + 1,
+            alpha: Math.random()
+        }));
+
+        function animateStars() {
+            starsCtx.clearRect(0, 0, starsCanvas.width, starsCanvas.height);
+            stars.forEach(s => {
+                s.alpha += (Math.random() - 0.5) * 0.05;
+                if (s.alpha < 0.2) s.alpha = 0.2;
+                if (s.alpha > 1) s.alpha = 1;
+                starsCtx.fillStyle = `rgba(255, 229, 127, ${s.alpha})`;
+                starsCtx.beginPath();
+                starsCtx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                starsCtx.fill();
+            });
+            requestAnimationFrame(animateStars);
+        }
+
+        /* Shooting Stars / Meteor Shower Engine */
+        const meteorCanvas = document.getElementById('shootingStarsCanvas');
+        const meteorCtx = meteorCanvas.getContext('2d');
+        let meteors = [];
+
+        function resizeMeteorCanvas() {
+            meteorCanvas.width = window.innerWidth;
+            meteorCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeMeteorCanvas);
+        resizeMeteorCanvas();
+
+        function createMeteor() {
+            meteors.push({
+                x: Math.random() * window.innerWidth * 1.2,
+                y: Math.random() * (window.innerHeight * 0.4),
+                length: Math.random() * 90 + 60,
+                speed: Math.random() * 10 + 12,
+                angle: Math.PI / 4,
+                opacity: 1,
+                color: `hsl(${Math.random() * 40 + 330}, 100%, 75%)`
+            });
+        }
+
+        function animateMeteors() {
+            meteorCtx.clearRect(0, 0, meteorCanvas.width, meteorCanvas.height);
+            
+            if (Math.random() < 0.04) {
+                createMeteor();
+            }
+
+            meteors.forEach((m, i) => {
+                const endX = m.x - Math.cos(m.angle) * m.length;
+                const endY = m.y + Math.sin(m.angle) * m.length;
+
+                const grad = meteorCtx.createLinearGradient(m.x, m.y, endX, endY);
+                grad.addColorStop(0, m.color);
+                grad.addColorStop(1, 'transparent');
+
+                meteorCtx.strokeStyle = grad;
+                meteorCtx.lineWidth = 2.5;
+                meteorCtx.beginPath();
+                meteorCtx.moveTo(m.x, m.y);
+                meteorCtx.lineTo(endX, endY);
+                meteorCtx.stroke();
+
+                m.x += Math.cos(m.angle) * m.speed;
+                m.y += Math.sin(m.angle) * m.speed;
+                m.opacity -= 0.015;
+
+                if (m.y > window.innerHeight || m.x < 0 || m.opacity <= 0) {
+                    meteors.splice(i, 1);
+                }
+            });
+
+            requestAnimationFrame(animateMeteors);
+        }
+
+        /* Particle System with Floating Cartoon Couple Emojis & Hearts */
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const COUPLE_EMOJIS = ['👩‍❤️‍👨', '👩‍❤️‍💋‍👨', '💖', '💕', '🧸', '🌸', '✨', '🌹'];
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 14 + 12;
+                this.speedY = Math.random() * 1.2 + 0.4;
+                this.speedX = Math.sin(Math.random() * Math.PI) * 0.7;
+                this.opacity = Math.random() * 0.75 + 0.25;
+                this.emoji = COUPLE_EMOJIS[Math.floor(Math.random() * COUPLE_EMOJIS.length)];
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -30) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.font = `${this.size}px sans-serif`;
+                ctx.fillText(this.emoji, this.x, this.y);
+                ctx.restore();
+            }
+        }
+
+        const particles = Array.from({ length: 40 }, () => new Particle());
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initOrbit();
+            renderReasons();
+            animateParticles();
+            animateStars();
+            animateMeteors();
+        });
+    </script>
+</body>
+
+</html>
