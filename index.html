@@ -2103,8 +2103,8 @@
         const nowObj = new Date();
         const CURRENT_YEAR = nowObj.getFullYear();
 
-        // TEMPORARY LIVE TEST DATE: Today at 11:00 AM (Change back to 09-11 after testing)
-        let TARGET_BIRTHDAY_DATE = `2026-08-31 11:00:00`;
+        // TEMPORARY LIVE TEST DATE: Today at 11:10 AM (Change back to 09-11 after testing)
+        let TARGET_BIRTHDAY_DATE = `2026-08-31 11:10:00`;
 
         // 10 Unique Personal Romantic Notes for each of the 10 Girlfriend Photos (Hridu Sona & My Cutie)
         const GF_PHOTO_NOTES = [
@@ -2187,6 +2187,20 @@
         let isBirthdayUnlocked = false;
         let isPreviewMode = false;
 
+        // 10 Spaced-out Precision Heart Positions for ultra-large photo cards
+        const GF_HEART_POSITIONS = [
+            { num: 1, left: 50, top: 22, rot: 0 },    // Top Cleft Notch
+            { num: 2, left: 71, top: 14, rot: 15 },   // Right Lobe Peak
+            { num: 3, left: 86, top: 32, rot: 30 },   // Right Outer Shoulder
+            { num: 4, left: 83, top: 55, rot: 0 },    // Right Mid Side
+            { num: 5, left: 68, top: 76, rot: -32 },  // Right Bottom Slope
+            { num: 6, left: 50, top: 89, rot: 0 },    // Bottom Tip Point
+            { num: 7, left: 32, top: 76, rot: 32 },   // Left Bottom Slope
+            { num: 8, left: 17, top: 55, rot: 0 },    // Left Mid Side
+            { num: 9, left: 14, top: 32, rot: -30 },  // Left Outer Shoulder
+            { num: 10, left: 29, top: 14, rot: -15 }  // Left Lobe Peak
+        ];
+
         function updateCountdown() {
             if (isPreviewMode) return;
 
@@ -2205,28 +2219,16 @@
             const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-            document.getElementById('cdDays').innerText = String(days).padStart(2, '0');
-            document.getElementById('cdHours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('cdMins').innerText = String(mins).padStart(2, '0');
-            document.getElementById('cdSecs').innerText = String(secs).padStart(2, '0');
+            const cdDays = document.getElementById('cdDays');
+            const cdHours = document.getElementById('cdHours');
+            const cdMins = document.getElementById('cdMins');
+            const cdSecs = document.getElementById('cdSecs');
+
+            if (cdDays) cdDays.innerText = String(days).padStart(2, '0');
+            if (cdHours) cdHours.innerText = String(hours).padStart(2, '0');
+            if (cdMins) cdMins.innerText = String(mins).padStart(2, '0');
+            if (cdSecs) cdSecs.innerText = String(secs).padStart(2, '0');
         }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // 10 Spaced-out Precision Heart Positions for ultra-large photo cards
-        const GF_HEART_POSITIONS = [
-            { num: 1, left: 50, top: 22, rot: 0 },    // Top Cleft Notch
-            { num: 2, left: 71, top: 14, rot: 15 },   // Right Lobe Peak
-            { num: 3, left: 86, top: 32, rot: 30 },   // Right Outer Shoulder
-            { num: 4, left: 83, top: 55, rot: 0 },    // Right Mid Side
-            { num: 5, left: 68, top: 76, rot: -32 },  // Right Bottom Slope
-            { num: 6, left: 50, top: 89, rot: 0 },    // Bottom Tip Point
-            { num: 7, left: 32, top: 76, rot: 32 },   // Left Bottom Slope
-            { num: 8, left: 17, top: 55, rot: 0 },    // Left Mid Side
-            { num: 9, left: 14, top: 32, rot: -30 },  // Left Outer Shoulder
-            { num: 10, left: 29, top: 14, rot: -15 }  // Left Lobe Peak
-        ];
 
         let gfHeartShuffleInterval = null;
 
@@ -2877,6 +2879,8 @@
             animateParticles();
             animateStars();
             animateMeteors();
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
         });
     </script>
 </body>
