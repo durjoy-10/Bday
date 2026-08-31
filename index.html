@@ -1604,7 +1604,7 @@
                 <option value="0">🎶 1. Tum Hi Ho (Arijit Singh)</option>
                 <option value="1">🎤 2. Dil Diyan Gallan (Atif Aslam)</option>
                 <option value="2">💖 3. Tujhe Sochta Hoon (KK)</option>
-                <option value="3">🌸 4. Tum Tak (Raanjhanaa)</option>
+                <option value="3" selected>🌸 4. Tum Tak (Raanjhanaa)</option>
                 <option value="4">💫 5. Abhi Kuch Dino Se (Mohit Chauhan)</option>
                 <option value="5">🌙 6. Sunn Raha Hai Na Tu (Ankit Tiwari)</option>
                 <option value="6">✨ 7. Te Amo (Ash King)</option>
@@ -1623,7 +1623,7 @@
             </button>
             <input type="file" id="localAudioInput" accept="audio/*" style="display:none;"
                 onchange="handleCustomAudioUpload(event)">
-            <audio id="bgMusic" preload="auto" src="audio/tum_hi_ho.mp3"></audio>
+            <audio id="bgMusic" preload="auto" src="audio/tum_tak.mp3"></audio>
         </div>
     </div>
 
@@ -1661,6 +1661,7 @@
                         <div class="countdown-label">Seconds</div>
                     </div>
                 </div>
+            </div>
         </section>
 
         <!-- =========================================================================
@@ -1972,13 +1973,40 @@
             fallback: "https://archive.org/download/happy_birthday_song-_z-1fTlSDF0_fmt43/happy_birthday_song-_z-1fTlSDF0_fmt43.mp3"
         };
 
-        let currentTrackIndex = 0;
+        let currentTrackIndex = 3;
 
         function initAudioEngine() {
             const audio = document.getElementById('bgMusic');
+            if (!audio) return;
+
             audio.addEventListener('ended', () => {
                 playNextRandomSong();
             });
+
+            const startPlay = () => {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        const vinyl = document.getElementById('vinyl');
+                        const icon = document.getElementById('playIcon');
+                        if (vinyl) vinyl.classList.add('playing');
+                        if (icon) icon.className = "fa-solid fa-pause";
+                    }).catch(err => {
+                        console.log("Autoplay waiting for user interaction:", err);
+                    });
+                }
+            };
+
+            // Attempt immediate autoplay on load
+            startPlay();
+
+            // Fallback: Start playing on first touch / tap / click anywhere on screen
+            const enableAudioOnUserGesture = () => {
+                startPlay();
+            };
+
+            document.addEventListener('click', enableAudioOnUserGesture, { once: true });
+            document.addEventListener('touchstart', enableAudioOnUserGesture, { once: true });
+            document.addEventListener('keydown', enableAudioOnUserGesture, { once: true });
         }
 
         function playNextRandomSong() {
@@ -2072,12 +2100,11 @@
         /* =========================================================================
            2. CONFIGURATION (10 SINGLE GF PHOTOS & 20 COUPLE PHOTOS ORBIT CONFIG)
            ========================================================================= */
-        const CURRENT_YEAR = new Date().getFullYear();
-        let TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR}-09-11 00:00:00`;
+        const nowObj = new Date();
+        const CURRENT_YEAR = nowObj.getFullYear();
 
-        if (new Date().getTime() > new Date(TARGET_BIRTHDAY_DATE).getTime() && new Date().getMonth() === 8 && new Date().getDate() > 11) {
-            TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR + 1}-09-11 00:00:00`;
-        }
+        // TEMPORARY LIVE TEST DATE: Today at 10:50 AM (Change back to 09-11 after testing)
+        let TARGET_BIRTHDAY_DATE = `2026-08-31 10:50:00`;
 
         // 10 Unique Personal Romantic Notes for each of the 10 Girlfriend Photos (Hridu Sona & My Cutie)
         const GF_PHOTO_NOTES = [
@@ -2168,7 +2195,8 @@
             const diff = targetTime - now;
 
             if (diff <= 0) {
-                unlockBirthdayCelebration();
+                const isLiveMidnightUnlock = (diff > -15000);
+                unlockBirthdayCelebration(isLiveMidnightUnlock);
                 return;
             }
 
@@ -2266,7 +2294,7 @@
             if (isBirthdayUnlocked) renderGFHeartMosaic();
         });
 
-        function unlockBirthdayCelebration() {
+        function unlockBirthdayCelebration(isLiveMidnightUnlock = false) {
             if (isBirthdayUnlocked) return;
             isBirthdayUnlocked = true;
 
@@ -2280,11 +2308,20 @@
             renderGFHeartMosaic();
             if (typeof initOrbit === 'function') initOrbit();
 
-            // Automatically play Romantic Happy Birthday Special Song!
             const musicSelect = document.getElementById('musicSelect');
-            if (musicSelect) {
-                musicSelect.value = "bday";
-                changeMusicPreset("bday");
+
+            if (isLiveMidnightUnlock) {
+                // If countdown reached 0 live while user was watching: play Happy Birthday Special Song!
+                if (musicSelect) {
+                    musicSelect.value = "bday";
+                    changeMusicPreset("bday");
+                }
+            } else {
+                // For all visits after midnight on 11th Sept: play 4th Song (Tum Tak)
+                if (musicSelect) {
+                    musicSelect.value = "3"; // Index 3 in PLAYLIST is 4th song
+                    changeMusicPreset("3");
+                }
             }
 
             startFireworks();
