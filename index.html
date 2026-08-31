@@ -1703,144 +1703,147 @@
                 </button>
             </div>
 
-        <!-- DYNAMIC CONTINUOUS ROTATING MEMORY ORBIT (20 Couple Photos with Extra Wide Gaps) -->
-        <section class="orbit-section" id="orbitSection">
-            <div class="section-header">
-                <h2 class="section-title">Our Memory Orbit 💫</h2>
-                <p class="section-desc">Our sweet couple memories floating in a spacious 3D ring. Drag left or right
-                    to rotate manually!</p>
-            </div>
-
-            <div class="orbit-stage-wrapper" id="orbitWrapper">
-                <div class="orbit-floor-ring"></div>
-                <div class="orbit-stage" id="orbitStage"></div>
-            </div>
-
-            <div class="orbit-note-display">
-                <div style="color: var(--gold-accent); font-size:0.9rem; font-weight:600; margin-bottom:8px;"
-                    id="orbitActiveTitle">
-                    First Sight ✨
+            <!-- DYNAMIC CONTINUOUS ROTATING MEMORY ORBIT (20 Couple Photos with Extra Wide Gaps) -->
+            <section class="orbit-section" id="orbitSection">
+                <div class="section-header">
+                    <h2 class="section-title">Our Memory Orbit 💫</h2>
+                    <p class="section-desc">Our sweet couple memories floating in a spacious 3D ring. Drag left or right
+                        to rotate manually!</p>
                 </div>
-                <p style="font-size: 1.15rem; line-height: 1.8; color: rgba(255,255,255,0.9);" id="orbitActiveNote">
-                    "The day I saw your lovely smile, my world changed forever."
-                </p>
-                <div class="orbit-controls-bar">
-                    <button class="btn-circle" onclick="rotateOrbitStep(-1)" title="Rotate Left">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </button>
-                    <button class="btn-primary" style="padding: 10px 24px; font-size: 0.95rem;"
-                        onclick="toggleOrbitAutoPlay()" id="orbitPlayBtn">
-                        <i class="fa-solid fa-pause"></i> Pause Orbit
-                    </button>
-                    <button class="btn-circle" onclick="rotateOrbitStep(1)" title="Rotate Right">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+
+                <div class="orbit-stage-wrapper" id="orbitWrapper">
+                    <div class="orbit-floor-ring"></div>
+                    <div class="orbit-stage" id="orbitStage"></div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Birthday Cake Section -->
-        <section class="cake-section" id="cakeSection">
-            <div class="section-header">
-                <h2 class="section-title">Make a Birthday Wish 🎂</h2>
-                <p class="section-desc">Click or tap on the candles to blow them out and make a wish!</p>
-            </div>
-
-            <div class="cake-wrapper" id="cakeWrapper" onclick="blowCandles()">
-                <div class="candle-container">
-                    <div class="candle">
-                        <div class="flame" id="flame1"></div>
+                <div class="orbit-note-display">
+                    <div style="color: var(--gold-accent); font-size:0.9rem; font-weight:600; margin-bottom:8px;"
+                        id="orbitActiveTitle">
+                        First Sight ✨
                     </div>
-                    <div class="candle">
-                        <div class="flame" id="flame2"></div>
-                    </div>
-                    <div class="candle">
-                        <div class="flame" id="flame3"></div>
-                    </div>
-                </div>
-                <div class="cake">
-                    <div class="plate"></div>
-                    <div class="layer layer-bottom"></div>
-                    <div class="layer layer-middle"></div>
-                    <div class="layer layer-top"></div>
-                    <div class="icing"></div>
-                    <div class="drip drip-1"></div>
-                    <div class="drip drip-2"></div>
-                    <div class="drip drip-3"></div>
-                    <div class="drip drip-4"></div>
-                </div>
-            </div>
-
-            <div class="wish-instruction" id="wishInstruction">
-                👇 Tap the candles to blow them out! ✨
-            </div>
-        </section>
-
-        <!-- Surprise Gift Box Section -->
-        <section class="gift-section" id="giftSection">
-            <div class="section-header">
-                <h2 class="section-title">Surprise Gift Box 🎁</h2>
-                <p class="section-desc">Click the gift box to unwrap your special romantic coupons!</p>
-            </div>
-
-            <div class="gift-box-wrapper" onclick="openSurpriseGift()">
-                <div class="gift-box" id="giftBox">
-                    <div class="gift-bow"></div>
-                    <div class="gift-ribbon-v"></div>
-                    <div class="gift-ribbon-h"></div>
-                </div>
-            </div>
-
-            <div class="coupons-grid" id="couponsGrid">
-                <div class="coupon-card">
-                    <div class="coupon-title">🤗 Unlimited Hugs</div>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Redeemable anytime for endless warm
-                        hugs!</p>
-                </div>
-                <div class="coupon-card">
-                    <div class="coupon-title">🍦 Ice Cream Date</div>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">A late-night sweet ice cream date
-                        together!</p>
-                </div>
-                <div class="coupon-card">
-                    <div class="coupon-title">🎬 Movie Choice</div>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">You get full control over movie night!
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: rgba(255,255,255,0.9);" id="orbitActiveNote">
+                        "The day I saw your lovely smile, my world changed forever."
                     </p>
+                    <div class="orbit-controls-bar">
+                        <button class="btn-circle" onclick="rotateOrbitStep(-1)" title="Rotate Left">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <button class="btn-primary" style="padding: 10px 24px; font-size: 0.95rem;"
+                            onclick="toggleOrbitAutoPlay()" id="orbitPlayBtn">
+                            <i class="fa-solid fa-pause"></i> Pause Orbit
+                        </button>
+                        <button class="btn-circle" onclick="rotateOrbitStep(1)" title="Rotate Right">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="coupon-card">
-                    <div class="coupon-title">❤️ Forever Love</div>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Infinite love and devotion, valid
-                        forever!</p>
+            </section>
+
+            <!-- Birthday Cake Section -->
+            <section class="cake-section" id="cakeSection">
+                <div class="section-header">
+                    <h2 class="section-title">Make a Birthday Wish 🎂</h2>
+                    <p class="section-desc">Click or tap on the candles to blow them out and make a wish!</p>
                 </div>
-            </div>
-        </section>
 
-        <!-- 10 Reasons Flip Cards -->
-        <section class="reasons-section" id="reasonsSection">
-            <div class="section-header">
-                <h2 class="section-title">10 Reasons Why You Are Special 💕</h2>
-                <p class="section-desc">Click on each card to reveal why I love you so much, Hridu Sona!</p>
-            </div>
-
-            <div class="reasons-grid" id="reasonsGrid"></div>
-        </section>
-
-        <!-- Love Letter Section -->
-        <section class="envelope-section" id="letterSection">
-            <div class="envelope-card">
-                <h2 class="letter-heading">A Heartfelt Letter for You 💌</h2>
-                <div class="letter-body" id="letterText">
-                    My Dearest Hridu Sona,
-                    Happy Birthday on this beautiful September 11th! 💕
-                    Your sweet smile and gentle heart make every single day feel special. Thank you for being my happiness, my safe place, and my best friend.
-
-                    May your year be blessed with joy, laughter, and endless success. I promise to love you and stand by your side forever.
-
-                    Happy Birthday, My Cutie! 🎂🎉✨
+                <div class="cake-wrapper" id="cakeWrapper" onclick="blowCandles()">
+                    <div class="candle-container">
+                        <div class="candle">
+                            <div class="flame" id="flame1"></div>
+                        </div>
+                        <div class="candle">
+                            <div class="flame" id="flame2"></div>
+                        </div>
+                        <div class="candle">
+                            <div class="flame" id="flame3"></div>
+                        </div>
+                    </div>
+                    <div class="cake">
+                        <div class="plate"></div>
+                        <div class="layer layer-bottom"></div>
+                        <div class="layer layer-middle"></div>
+                        <div class="layer layer-top"></div>
+                        <div class="icing"></div>
+                        <div class="drip drip-1"></div>
+                        <div class="drip drip-2"></div>
+                        <div class="drip drip-3"></div>
+                        <div class="drip drip-4"></div>
+                    </div>
                 </div>
-                <div class="letter-signature">Always Yours ❤️</div>
-            </div>
-        </section>
+
+                <div class="wish-instruction" id="wishInstruction">
+                    👇 Tap the candles to blow them out! ✨
+                </div>
+            </section>
+
+            <!-- Surprise Gift Box Section -->
+            <section class="gift-section" id="giftSection">
+                <div class="section-header">
+                    <h2 class="section-title">Surprise Gift Box 🎁</h2>
+                    <p class="section-desc">Click the gift box to unwrap your special romantic coupons!</p>
+                </div>
+
+                <div class="gift-box-wrapper" onclick="openSurpriseGift()">
+                    <div class="gift-box" id="giftBox">
+                        <div class="gift-bow"></div>
+                        <div class="gift-ribbon-v"></div>
+                        <div class="gift-ribbon-h"></div>
+                    </div>
+                </div>
+
+                <div class="coupons-grid" id="couponsGrid">
+                    <div class="coupon-card">
+                        <div class="coupon-title">🤗 Unlimited Hugs</div>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Redeemable anytime for endless warm
+                            hugs!</p>
+                    </div>
+                    <div class="coupon-card">
+                        <div class="coupon-title">🍦 Ice Cream Date</div>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">A late-night sweet ice cream date
+                            together!</p>
+                    </div>
+                    <div class="coupon-card">
+                        <div class="coupon-title">🎬 Movie Choice</div>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">You get full control over movie
+                            night!
+                        </p>
+                    </div>
+                    <div class="coupon-card">
+                        <div class="coupon-title">❤️ Forever Love</div>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Infinite love and devotion, valid
+                            forever!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10 Reasons Flip Cards -->
+            <section class="reasons-section" id="reasonsSection">
+                <div class="section-header">
+                    <h2 class="section-title">10 Reasons Why You Are Special 💕</h2>
+                    <p class="section-desc">Click on each card to reveal why I love you so much, Hridu Sona!</p>
+                </div>
+
+                <div class="reasons-grid" id="reasonsGrid"></div>
+            </section>
+
+            <!-- Love Letter Section -->
+            <section class="envelope-section" id="letterSection">
+                <div class="envelope-card">
+                    <h2 class="letter-heading">A Heartfelt Letter for You 💌</h2>
+                    <div class="letter-body" id="letterText">
+                        My Dearest Hridu Sona,
+                        Happy Birthday on this beautiful September 11th! 💕
+                        Your sweet smile and gentle heart make every single day feel special. Thank you for being my
+                        happiness, my safe place, and my best friend.
+
+                        May your year be blessed with joy, laughter, and endless success. I promise to love you and
+                        stand by your side forever.
+
+                        Happy Birthday, My Cutie! 🎂🎉✨
+                    </div>
+                    <div class="letter-signature">Always Yours ❤️</div>
+                </div>
+            </section>
 
         </div> <!-- End september11ViewContainer -->
 
@@ -2101,10 +2104,15 @@
            2. CONFIGURATION (10 SINGLE GF PHOTOS & 20 COUPLE PHOTOS ORBIT CONFIG)
            ========================================================================= */
         const nowObj = new Date();
-        const CURRENT_YEAR = nowObj.getFullYear();
+        let CURRENT_YEAR = nowObj.getFullYear();
+        let targetBirthday = new Date(`${CURRENT_YEAR}-09-11 00:00:00`);
 
-        // TEMPORARY LIVE TEST DATE: Today at 11:10 AM (Change back to 09-11 after testing)
-        let TARGET_BIRTHDAY_DATE = `2026-09-11 00:00:00`;
+        // If September 11th of current year has already passed (24-hour celebration window ended), target next year!
+        if (nowObj.getTime() > targetBirthday.getTime() + (24 * 60 * 60 * 1000)) {
+            CURRENT_YEAR += 1;
+        }
+
+        let TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR}-09-11 00:00:00`;
 
         // 10 Unique Personal Romantic Notes for each of the 10 Girlfriend Photos (Hridu Sona & My Cutie)
         const GF_PHOTO_NOTES = [
