@@ -2103,8 +2103,8 @@
         const nowObj = new Date();
         const CURRENT_YEAR = nowObj.getFullYear();
 
-        // TEMPORARY LIVE TEST DATE: Today at 10:50 AM (Change back to 09-11 after testing)
-        let TARGET_BIRTHDAY_DATE = `2026-08-31 10:50:00`;
+        // TEMPORARY LIVE TEST DATE: Today at 11:00 AM (Change back to 09-11 after testing)
+        let TARGET_BIRTHDAY_DATE = `2026-08-31 11:00:00`;
 
         // 10 Unique Personal Romantic Notes for each of the 10 Girlfriend Photos (Hridu Sona & My Cutie)
         const GF_PHOTO_NOTES = [
@@ -2298,15 +2298,25 @@
             if (isBirthdayUnlocked) return;
             isBirthdayUnlocked = true;
 
-            document.getElementById('countdownWrapper').style.display = "none";
+            const countdownWrapper = document.getElementById('countdownWrapper');
+            if (countdownWrapper) countdownWrapper.style.display = "none";
 
-            document.getElementById('statusBadge').innerText = "👑 HAPPY BIRTHDAY MY CUTIE, HRIDU SONA 👑";
-            document.getElementById('mainHeroTitle').innerText = "Happy Birthday, My Cutie Hridu Sona! ❤️";
-            document.getElementById('mainHeroSub').innerText = "Today is September 11th! Wishing you a day filled with infinite love, joy, and laughter.";
+            const statusBadge = document.getElementById('statusBadge');
+            if (statusBadge) statusBadge.innerText = "👑 HAPPY BIRTHDAY MY CUTIE, HRIDU SONA 👑";
 
-            document.getElementById('september11ViewContainer').style.display = "block";
+            const mainHeroTitle = document.getElementById('mainHeroTitle');
+            if (mainHeroTitle) mainHeroTitle.innerText = "Happy Birthday, My Cutie Hridu Sona! ❤️";
+
+            const mainHeroSub = document.getElementById('mainHeroSub');
+            if (mainHeroSub) mainHeroSub.innerText = "Today is September 11th! Wishing you a day filled with infinite love, joy, and laughter.";
+
+            const viewContainer = document.getElementById('september11ViewContainer');
+            if (viewContainer) viewContainer.style.display = "block";
+
+            // Initialize all unlocked features safely
             renderGFHeartMosaic();
             if (typeof initOrbit === 'function') initOrbit();
+            if (typeof renderReasons === 'function') renderReasons();
 
             const musicSelect = document.getElementById('musicSelect');
 
@@ -2324,8 +2334,12 @@
                 }
             }
 
-            startFireworks();
-            triggerHeartBurst();
+            try {
+                startFireworks();
+                triggerHeartBurst();
+            } catch (e) {
+                console.log("Animation trigger:", e);
+            }
         }
 
         function togglePreviewBirthdayView() {
@@ -2403,35 +2417,42 @@
         let orbitAngle = 0;
         let isOrbitPlaying = true;
         let activeOrbitIndex = 0;
+        let isOrbitLoopRunning = false;
 
         function initOrbit() {
             const stage = document.getElementById('orbitStage');
-            stage.innerHTML = '';
+            if (!stage) return;
 
-            MEMORIES.forEach((item, i) => {
-                const card = document.createElement('div');
-                card.className = 'orbit-card';
-                card.id = `orbitCard_${i}`;
+            if (stage.children.length === 0) {
+                MEMORIES.forEach((item, i) => {
+                    const card = document.createElement('div');
+                    card.className = 'orbit-card';
+                    card.id = `orbitCard_${i}`;
 
-                card.onclick = () => {
-                    activeOrbitIndex = i;
-                    openStoryModal(i);
-                };
+                    card.onclick = () => {
+                        activeOrbitIndex = i;
+                        openStoryModal(i);
+                    };
 
-                card.innerHTML = `
-                    <div class="orbit-img-box">
-                        <img src="${item.image}" alt="${item.title}" onerror="this.src='images/1.jpg'">
-                    </div>
-                    <div class="orbit-caption">
-                        <div class="orbit-title">${item.title}</div>
-                        <div class="orbit-date"><i class="fa-regular fa-calendar-heart"></i> ${item.date}</div>
-                    </div>
-                `;
-                stage.appendChild(card);
-            });
+                    card.innerHTML = `
+                        <div class="orbit-img-box">
+                            <img src="${item.image}" alt="${item.title}" onerror="this.src='images/1.jpg'">
+                        </div>
+                        <div class="orbit-caption">
+                            <div class="orbit-title">${item.title}</div>
+                            <div class="orbit-date"><i class="fa-regular fa-calendar-heart"></i> ${item.date}</div>
+                        </div>
+                    `;
+                    stage.appendChild(card);
+                });
 
-            setupOrbitDragInteraction();
-            animateOrbit();
+                setupOrbitDragInteraction();
+            }
+
+            if (!isOrbitLoopRunning) {
+                isOrbitLoopRunning = true;
+                requestAnimationFrame(animateOrbit);
+            }
         }
 
         function getAdaptiveRadius() {
@@ -2443,7 +2464,7 @@
 
         function animateOrbit() {
             if (isOrbitPlaying) {
-                orbitAngle += 0.22;
+                orbitAngle += 0.20;
             }
 
             const count = MEMORIES.length;
@@ -2469,8 +2490,10 @@
 
                 if (z > radius * 0.82 && activeOrbitIndex !== i) {
                     activeOrbitIndex = i;
-                    document.getElementById('orbitActiveTitle').innerText = MEMORIES[i].title;
-                    document.getElementById('orbitActiveNote').innerText = `"${MEMORIES[i].note}"`;
+                    const titleEl = document.getElementById('orbitActiveTitle');
+                    const noteEl = document.getElementById('orbitActiveNote');
+                    if (titleEl) titleEl.innerText = MEMORIES[i].title;
+                    if (noteEl) noteEl.innerText = `"${MEMORIES[i].note}"`;
                 }
             });
 
