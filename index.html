@@ -1600,6 +1600,7 @@
             <div class="vinyl-disc" id="vinyl"></div>
             <select id="musicSelect" onchange="changeMusicPreset(this.value)" class="music-dropdown"
                 title="Select Hindi Romantic Song">
+                <option value="bday">🎂 0. Happy Birthday Vocal Special (Hridu Sona)</option>
                 <option value="0">🎶 1. Tum Hi Ho (Arijit Singh)</option>
                 <option value="1">🎤 2. Dil Diyan Gallan (Atif Aslam)</option>
                 <option value="2">💖 3. Tujhe Sochta Hoon (KK)</option>
@@ -1660,57 +1661,46 @@
                         <div class="countdown-label">Seconds</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- =========================================================================
-               11TH SEPTEMBER ULTRA-HD BIGGER 10-PHOTO LOVE HEART SHAPE
-               (Countdown disappears & this container automatically appears on 11th Sept)
-               ========================================================================= -->
-            <div class="september11-view-container" id="september11ViewContainer">
-                <div class="heart-mosaic-wrapper" id="heartMosaicStage">
-                    <!-- Glowing Heart Path Backdrop Vector -->
-                    <svg class="heart-svg-backdrop" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <path
-                            d="M 50 22 C 40 6, 10 6, 10 34 C 10 60, 50 88, 50 88 C 50 88, 90 60, 90 34 C 90 6, 60 6, 50 22 Z"
-                            fill="rgba(255, 77, 109, 0.08)" stroke="rgba(255, 77, 109, 0.6)" stroke-width="1.8"
-                            stroke-dasharray="4 3" />
-                    </svg>
-
-                    <!-- Center Birthday Emblem Card -->
-                    <div class="heart-center-card">
-                        <div class="heart-center-crown"><i class="fa-solid fa-crown"></i></div>
-                        <h2 class="heart-center-title">Happy Birthday, My Cutie! 💖</h2>
-                        <div class="heart-center-sub">For My Sweet Hridu Sona ✨</div>
-                        <div style="font-size: 0.68rem; color: rgba(255,255,255,0.85); margin-top: 4px;">✨ Tap any photo
-                            to view ✨</div>
-                    </div>
-
-                    <!-- Dynamic Precision 10 Girlfriend Photos rendered via JS -->
-                </div>
-
-                <!-- Wishing Balloons Box -->
-                <div class="wishing-balloons-container">
-                    <button class="wishing-balloon-btn" onclick="popWishBalloon(1)">
-                        🎈 Wish #1: Endless Smiles & Joy
-                    </button>
-                    <button class="wishing-balloon-btn" onclick="popWishBalloon(2)">
-                        🎈 Wish #2: Forever Together ❤️
-                    </button>
-                    <button class="wishing-balloon-btn" onclick="popWishBalloon(3)">
-                        🎈 Wish #3: Dreams Come True ✨
-                    </button>
-                </div>
-            </div>
-
-            <div class="hero-buttons">
-                <button class="btn-primary" onclick="scrollToSection('orbitSection')">
-                    <i class="fa-solid fa-rotate"></i> Dynamic Memory Orbit
-                </button>
-                <button class="btn-secondary" onclick="togglePreviewBirthdayView()" id="previewToggleBtn">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Preview 11th Sept Surprise View
-                </button>
-            </div>
         </section>
+
+        <!-- =========================================================================
+           11TH SEPTEMBER ULTRA-HD SURPRISE CONTAINER
+           (Countdown disappears & this container automatically appears on 11th Sept)
+           ========================================================================= -->
+        <div class="september11-view-container" id="september11ViewContainer">
+            <div class="heart-mosaic-wrapper" id="heartMosaicStage">
+                <!-- Glowing Heart Path Backdrop Vector -->
+                <svg class="heart-svg-backdrop" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path
+                        d="M 50 22 C 40 6, 10 6, 10 34 C 10 60, 50 88, 50 88 C 50 88, 90 60, 90 34 C 90 6, 60 6, 50 22 Z"
+                        fill="rgba(255, 77, 109, 0.08)" stroke="rgba(255, 77, 109, 0.6)" stroke-width="1.8"
+                        stroke-dasharray="4 3" />
+                </svg>
+
+                <!-- Center Birthday Emblem Card -->
+                <div class="heart-center-card">
+                    <div class="heart-center-crown"><i class="fa-solid fa-crown"></i></div>
+                    <h2 class="heart-center-title">Happy Birthday, My Cutie! 💖</h2>
+                    <div class="heart-center-sub">For My Sweet Hridu Sona ✨</div>
+                    <div style="font-size: 0.68rem; color: rgba(255,255,255,0.85); margin-top: 4px;">✨ Tap any photo
+                        to view ✨</div>
+                </div>
+
+                <!-- Dynamic Precision 10 Girlfriend Photos rendered via JS -->
+            </div>
+
+            <!-- Wishing Balloons Box -->
+            <div class="wishing-balloons-container">
+                <button class="wishing-balloon-btn" onclick="popWishBalloon(1)">
+                    🎈 Wish #1: Endless Smiles & Joy
+                </button>
+                <button class="wishing-balloon-btn" onclick="popWishBalloon(2)">
+                    🎈 Wish #2: Forever Together ❤️
+                </button>
+                <button class="wishing-balloon-btn" onclick="popWishBalloon(3)">
+                    🎈 Wish #3: Dreams Come True ✨
+                </button>
+            </div>
 
         <!-- DYNAMIC CONTINUOUS ROTATING MEMORY ORBIT (20 Couple Photos with Extra Wide Gaps) -->
         <section class="orbit-section" id="orbitSection">
@@ -1851,6 +1841,8 @@
             </div>
         </section>
 
+        </div> <!-- End september11ViewContainer -->
+
         <footer>
             Crafted with Infinite Love <i class="fa-solid fa-heart"></i> for Hridu Sona's 11th September Birthday
         </footer>
@@ -1974,6 +1966,12 @@
             }
         ];
 
+        const BIRTHDAY_SPECIAL_TRACK = {
+            title: "Happy Birthday Vocal Special (Hridu Sona)",
+            url: "audio/birthday_song.mp3",
+            fallback: "https://archive.org/download/happy_birthday_song-_z-1fTlSDF0_fmt43/happy_birthday_song-_z-1fTlSDF0_fmt43.mp3"
+        };
+
         let currentTrackIndex = 0;
 
         function initAudioEngine() {
@@ -2007,9 +2005,10 @@
                     icon.className = "fa-solid fa-pause";
                 }).catch(err => {
                     console.warn("Audio playback issue, attempting fallback:", err);
-                    const currentIdx = parseInt(document.getElementById('musicSelect').value, 10) || 0;
-                    if (PLAYLIST[currentIdx] && PLAYLIST[currentIdx].fallback) {
-                        audio.src = PLAYLIST[currentIdx].fallback;
+                    const currentVal = document.getElementById('musicSelect').value;
+                    let track = currentVal === "bday" ? BIRTHDAY_SPECIAL_TRACK : PLAYLIST[parseInt(currentVal, 10) || 0];
+                    if (track && track.fallback) {
+                        audio.src = track.fallback;
                         audio.play().then(() => {
                             vinyl.classList.add('playing');
                             icon.className = "fa-solid fa-pause";
@@ -2028,23 +2027,32 @@
                 document.getElementById('localAudioInput').click();
                 return;
             }
-            const idx = parseInt(val, 10);
-            currentTrackIndex = idx;
+
+            let track;
+            if (val === "bday") {
+                track = BIRTHDAY_SPECIAL_TRACK;
+            } else {
+                const idx = parseInt(val, 10);
+                currentTrackIndex = idx;
+                track = PLAYLIST[idx];
+            }
+
+            if (!track) return;
+
             const audio = document.getElementById('bgMusic');
-            const track = PLAYLIST[idx];
             audio.src = track.url;
             audio.load();
             audio.play().then(() => {
                 document.getElementById('vinyl').classList.add('playing');
                 document.getElementById('playIcon').className = "fa-solid fa-pause";
             }).catch(err => {
-                console.warn("Loading fallback URL...");
+                console.warn("Loading fallback URL...", err);
                 audio.src = track.fallback;
                 audio.load();
                 audio.play().then(() => {
                     document.getElementById('vinyl').classList.add('playing');
                     document.getElementById('playIcon').className = "fa-solid fa-pause";
-                });
+                }).catch(e => console.warn("Fallback play error:", e));
             });
         }
 
@@ -2270,6 +2278,14 @@
 
             document.getElementById('september11ViewContainer').style.display = "block";
             renderGFHeartMosaic();
+            if (typeof initOrbit === 'function') initOrbit();
+
+            // Automatically play Romantic Happy Birthday Special Song!
+            const musicSelect = document.getElementById('musicSelect');
+            if (musicSelect) {
+                musicSelect.value = "bday";
+                changeMusicPreset("bday");
+            }
 
             startFireworks();
             triggerHeartBurst();
