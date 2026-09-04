@@ -2068,7 +2068,7 @@
             let track;
             if (val === "bday") {
                 track = BIRTHDAY_SPECIAL_TRACK;
-            } else {
+            } else {k
                 const idx = parseInt(val, 10);
                 currentTrackIndex = idx;
                 track = PLAYLIST[idx];
@@ -2109,16 +2109,17 @@
         /* =========================================================================
            2. CONFIGURATION (10 SINGLE GF PHOTOS & 20 COUPLE PHOTOS ORBIT CONFIG)
            ========================================================================= */
-        const nowObj = new Date();
-        let CURRENT_YEAR = nowObj.getFullYear();
-        let targetBirthday = new Date(`${CURRENT_YEAR}-09-11 00:00:00`);
-
-        // If September 11th of current year has already passed (24-hour celebration window ended), target next year!
-        if (nowObj.getTime() > targetBirthday.getTime() + (24 * 60 * 60 * 1000)) {
-            CURRENT_YEAR += 1;
+        function getTargetBirthdayDate(nowDate = new Date()) {
+            const year = nowDate.getFullYear();
+            // Target September 11th 00:00:00 (Month 8 in JS Date = September)
+            let target = new Date(year, 8, 11, 0, 0, 0);
+            const twentyFourHours = 24 * 60 * 60 * 1000;
+            // If the 24-hour birthday celebration window has passed for this year, target September 11th of next year!
+            if (nowDate.getTime() > target.getTime() + twentyFourHours) {
+                target = new Date(year + 1, 8, 11, 0, 0, 0);
+            }
+            return target;
         }
-
-        let TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR}-09-11 00:00:00`;
 
         // 10 Unique Personal Romantic Notes for each of the 10 Girlfriend Photos (Hridu Sona & My Cutie)
         const GF_PHOTO_NOTES = [
@@ -2218,39 +2219,38 @@
         function updateCountdown() {
             if (isPreviewMode) return;
 
-            let targetTime = new Date(TARGET_BIRTHDAY_DATE).getTime();
-            let now = new Date().getTime();
-            let diff = targetTime - now;
+            const now = new Date();
+            const targetDate = getTargetBirthdayDate(now);
+            const targetTime = targetDate.getTime();
+            const nowTime = now.getTime();
+            let diff = targetTime - nowTime;
 
-            if (diff <= 0) {
-                // Check if 24 hours (86,400,000 ms) have passed since target birthday date
-                if (Math.abs(diff) > 24 * 60 * 60 * 1000) {
-                    // 24 hours celebration ended -> Automatically switch to Next Year's September 11th Countdown!
-                    CURRENT_YEAR += 1;
-                    TARGET_BIRTHDAY_DATE = `${CURRENT_YEAR}-09-03 10:30:00`;
-                    targetTime = new Date(TARGET_BIRTHDAY_DATE).getTime();
-                    diff = targetTime - now;
+            const twentyFourHours = 24 * 60 * 60 * 1000;
 
-                    isBirthdayUnlocked = false;
-                    const viewContainer = document.getElementById('september11ViewContainer');
-                    if (viewContainer) viewContainer.style.display = "none";
+            // If we are currently inside the 24-hour celebration window (Sept 11th 00:00:00 to 23:59:59)
+            if (nowTime >= targetTime && nowTime <= targetTime + twentyFourHours) {
+                const isLiveMidnightUnlock = ((nowTime - targetTime) < 15000);
+                unlockBirthdayCelebration(isLiveMidnightUnlock);
+                return;
+            }
 
-                    const countdownWrapper = document.getElementById('countdownWrapper');
-                    if (countdownWrapper) countdownWrapper.style.display = "block";
+            // If 24 hours have passed and celebration ended, reset UI back to Countdown mode
+            if (isBirthdayUnlocked) {
+                isBirthdayUnlocked = false;
+                const viewContainer = document.getElementById('september11ViewContainer');
+                if (viewContainer) viewContainer.style.display = "none";
 
-                    const statusBadge = document.getElementById('statusBadge');
-                    if (statusBadge) statusBadge.innerText = "💖 BIRTHDAY COUNTDOWN 💖";
+                const countdownWrapper = document.getElementById('countdownWrapper');
+                if (countdownWrapper) countdownWrapper.style.display = "block";
 
-                    const mainHeroTitle = document.getElementById('mainHeroTitle');
-                    if (mainHeroTitle) mainHeroTitle.innerText = "Countdown to My Cutie's Birthday ✨";
+                const statusBadge = document.getElementById('statusBadge');
+                if (statusBadge) statusBadge.innerText = "✨ Counting Down to 11th September ✨";
 
-                    const mainHeroSub = document.getElementById('mainHeroSub');
-                    if (mainHeroSub) mainHeroSub.innerText = "Counting down every second until September 11th for Hridu Sona ❤️";
-                } else {
-                    const isLiveMidnightUnlock = (diff > -15000);
-                    unlockBirthdayCelebration(isLiveMidnightUnlock);
-                    return;
-                }
+                const mainHeroTitle = document.getElementById('mainHeroTitle');
+                if (mainHeroTitle) mainHeroTitle.innerText = "Waiting for September 11th... ❤️";
+
+                const mainHeroSub = document.getElementById('mainHeroSub');
+                if (mainHeroSub) mainHeroSub.innerText = "Counting every second until your birthday, my sweet Hridu Sona! A magical surprise awaits you.";
             }
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
